@@ -15,6 +15,7 @@ const Navbar = () => {
             <Link to="/">Sparring</Link>
          </div>
          <div className="px-1">
+            <Link to="/profile">get Profile</Link>
             <Link to="/register">Register</Link>
             <Link to="/login" className="px-4 py-2 text-white bg-blue-500 rounded-lg">Login</Link>
          </div>
