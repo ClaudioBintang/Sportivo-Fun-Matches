@@ -8,7 +8,7 @@ export const useRegister = () => {
         name: "",
         email: "",
         password: "",
-        confirm_password: "",
+        c_password: "",
         phone_number: "",
         address: "",
         role: "",
@@ -28,15 +28,17 @@ export const useRegister = () => {
         try {
             const response = await axios.post("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/register", credentials);
             console.log("response", response);
-            setTimeout(() => navigate("/"), 1000);
+            setTimeout(() => navigate("/login"), 2000);
             setCredentials(response.data);
+            setSuccess("Register Success..");
         } catch (error) {
-            console.log(error);
+            console.log(error.response.data);
+            setError(error.response.data);
         } finally {
             setLoading(false);
         }
     }
     return (
-        {handleChange, usedRegister, loading, credentials}
+        {handleChange, usedRegister, loading, credentials, success, error}
     )
 }

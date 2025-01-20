@@ -13,7 +13,7 @@ const Profilepage = () => {
     <h1>hello, this is profil page</h1>
         <div className="profilepage-container"> 
             <h1>Profile</h1>
-            <p>{profile.username}</p>
+            <p>{profile.name}</p>
             <p>{profile.email}</p>
             <p>{profile.created_at}</p>
         </div>
