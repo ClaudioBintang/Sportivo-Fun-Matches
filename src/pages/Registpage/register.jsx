@@ -14,11 +14,11 @@ const Registpage = () => {
      usedRegister();
     }, []);   
     return (
-        <>
+<>
         {success && <p className="text-green-500">{success}</p>}
         {error && <p className="text-red-500">{error}</p>}
-        <div className="flex flex-col min-h-screen lg:flex-row">
-      {/* Left Section - Sign Up Form */}
+    {/* Login Side - Section Left */}
+    <div className="flex flex-col min-h-screen lg:flex-row">
       <div className="flex items-center justify-center flex-1 p-6 lg:p-12">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
@@ -74,7 +74,7 @@ const Registpage = () => {
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/50"
               />
-              {/* {errors.c_Password && <p className="text-sm text-red-600">{errors.c_Password}</p>} */}
+    
             </div>
             <div className="space-y-2">
               <label htmlFor="phoneNumber" className="text-sm font-medium">Phone Number</label>
@@ -111,7 +111,6 @@ const Registpage = () => {
             {loading ? "Loading..." : "Sign Up"}
             </button>
           </form>
-
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
@@ -123,18 +122,25 @@ const Registpage = () => {
 
           <div className="flex justify-center gap-4">
             <button className="inline-flex items-center justify-center p-2 border rounded-lg hover:bg-gray-50">
-              <img src="https://v0.dev/icons/google.svg" alt="Google" className="w-6 h-6" />
+              <img src={google} alt="Google" className="w-6 h-6" />
             </button>
             <button className="inline-flex items-center justify-center p-2 border rounded-lg hover:bg-gray-50">
-              <img src="https://v0.dev/icons/facebook.svg" alt="Facebook" className="w-6 h-6" />
+              <img src={facebook} alt="Facebook" className="w-6 h-6" />
             </button>
           </div>
+          <p className="text-sm text-center text-gray-600">
+            have an account?{" "}
+            <Link to="/login" className="font-medium text-red-600 hover:underline">
+              Sign In Here
+            </Link>
+          </p>
         </div>
       </div>
 
-      {/* Right Section - Hero */}
+    {/* Hero - section right */}
       <div className="relative flex items-center justify-center flex-1 p-6 bg-red-600 lg:p-12">
         <div className="relative z-10 text-center text-white">
+          <img src={football} alt="football" />
           <h1 className="mb-4 text-4xl font-bold">SPORTIVO,</h1>
           <p className="mb-8 text-2xl">Let's find your partner match and Play Together!</p>
           <p className="mb-8 text-sm">
@@ -157,7 +163,7 @@ const Registpage = () => {
         </div>
       </div>
     </div>
-        </>
-    )
+</>
+)
 }
 export default Registpage
