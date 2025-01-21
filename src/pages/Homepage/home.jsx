@@ -1,3 +1,4 @@
+// import Filter from "../../components/Filter/filter"
 import Navbar from "../../components/Navbar/navigasi"
 
 const Homepage = () => {
@@ -5,6 +6,7 @@ const Homepage = () => {
         <>
         <Navbar/>
         <h2>home now</h2>
+        {/* <Filter/> */}
         </>
     )
 }
