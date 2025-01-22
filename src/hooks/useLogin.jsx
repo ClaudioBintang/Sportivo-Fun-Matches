@@ -1,5 +1,4 @@
 import { useState } from "react"
-// import { getLogin } from "../api/login"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
@@ -20,8 +19,8 @@ export const useLogin = () => {
         setLoading(true);
         try {
             const response = await axios.post('https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/login', credentials);
-            console.log("response", response.data.token);
-            localStorage.setItem("token", response.data.token);
+            console.log("response", response.data?.data?.token);
+            localStorage.setItem("token", response.data?.data?.token);
             setTimeout(() => navigate("/"), 1000);
             setCredentials(response.data);
         } catch (error) {

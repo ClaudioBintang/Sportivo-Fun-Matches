@@ -88,7 +88,7 @@ const Loginpage = () => {
       <div className="relative flex items-center justify-center flex-1 p-6 bg-red-600 lg:p-12">
         <div className="relative z-10 text-center text-white">
           <img src={football} alt="football" />
-          <h1 className="mb-4 text-4xl font-bold">SPORTIVO,</h1>
+          <h1 className="mb-4 text-4xl font-bold">SPORTIVO</h1>
           <p className="mb-8 text-2xl">Let's find your partner match and Play Together!</p>
           <p className="mb-8 text-sm">
             Puluhan ribu teman baru sudah menantimu di lapangan, yuk download Aplikasi SPORTIVO sekarang juga!

@@ -13,13 +13,13 @@ const Profilepage = () => {
     <Navbar/>
     <h1>hello, this is profil page</h1>
     {error ? (
-                    <p style={{ color: "red" }}>{error}</p>
+                <p style={{ color: "red" }}>{error}</p>
                 ) : (
-                    <>
-                        <p>Nama: {profile?.name || "Tidak tersedia"}</p>
-                        <p>Email: {profile?.email || "Tidak tersedia"}</p>
-                        <p>Bergabung pada: {profile?.created_at || "Tidak tersedia"}</p>
-                    </>
+                <>
+                    <p>Nama: {profile?.name || "Tidak tersedia"}</p>
+                    <p>Email: {profile?.email || "Tidak tersedia"}</p>
+                    <p>Bergabung pada: {profile?.created_at || "Tidak tersedia"}</p>
+                </>
                 )}
     </>
     )
