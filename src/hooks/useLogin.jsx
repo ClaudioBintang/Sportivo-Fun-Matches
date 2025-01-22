@@ -20,7 +20,7 @@ export const useLogin = () => {
         setLoading(true);
         try {
             const response = await axios.post('https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/login', credentials);
-            console.log("response", response);
+            console.log("response", response.data.token);
             localStorage.setItem("token", response.data.token);
             setTimeout(() => navigate("/"), 1000);
             setCredentials(response.data);

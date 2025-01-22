@@ -3,17 +3,29 @@ import { useState } from "react";
 import axios from "axios";
 export const useMe = () => {
     const [profile, setProfile] = useState({});
+    const [error, setError] = useState(null)
 
     const getProfile = async () => {
         const token = localStorage.getItem("token");
+        if (!token){
+            setError("token not found")
+        }
         const config = { headers: { Authorization: `Bearer ${token}` } };
         try {
             const response = await axios.get("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/me", config);
-            console.log("response", response);
-            setProfile(response);
+            console.log("response", response.data);
+            setProfile(response.data);
         } catch (error) {
-            console.log(error);
+            if (axios.isAxiosError(error) && error.response) {
+                if (error.response.status === 401) {
+                setError("unAuthorized: token tidak valid");
+                } else {
+                    setError(`Error: ${error.response.statusText}`);
+                }} 
+                else {
+                    setError("Error: mengambil data profile");
+                }
+            }
         }
-    }
-    return {getProfile, profile}
+        return {getProfile, profile, error}
 }

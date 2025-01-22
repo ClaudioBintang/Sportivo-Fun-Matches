@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import Navbar from "../../components/Navbar/navigasi";
 
 const Profilepage = () => {
-    const {getProfile, profile} = useMe();
+    const {getProfile, profile, error} = useMe();
+
     useEffect(() => {
         getProfile();
     }, [])
@@ -11,12 +12,15 @@ const Profilepage = () => {
     <>
     <Navbar/>
     <h1>hello, this is profil page</h1>
-        <div className="profilepage-container"> 
-            <h1>Profile</h1>
-            <p>{profile.name}</p>
-            <p>{profile.email}</p>
-            <p>{profile.created_at}</p>
-        </div>
+    {error ? (
+                    <p style={{ color: "red" }}>{error}</p>
+                ) : (
+                    <>
+                        <p>Nama: {profile?.name || "Tidak tersedia"}</p>
+                        <p>Email: {profile?.email || "Tidak tersedia"}</p>
+                        <p>Bergabung pada: {profile?.created_at || "Tidak tersedia"}</p>
+                    </>
+                )}
     </>
     )
 }

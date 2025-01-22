@@ -1,9 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import Logo from "../../assets/sportivo logo.png"
+import profile from "../../assets/profile.png"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+      localStorage.clear();
+      setTimeout(() => {
+        navigate("/login")
+      })
+    }
     return (
 <>
 <nav className="bg-white shadow-sm">
@@ -12,11 +22,13 @@ const Navbar = () => {
           {/* Logo Section */}
           <div className="flex items-center flex-shrink-0">
             <div className="flex items-center">
+              <Link to="/">
               <img
                 src={Logo}
                 alt="Sportivo Logo"
                 className="w-auto h-12"
-              />
+                />
+              </Link>
             </div>
           </div>
 
@@ -44,18 +56,29 @@ const Navbar = () => {
 
           {/* Authentication Buttons */}
           <div className="hidden sm:flex sm:items-center sm:space-x-4">
-          <Link to="/register" className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
-            <button>
-              SIGN IN
+          {token ? (
+            <button
+              onClick={handleLogout}
+              className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
+              Logout
             </button>
-            </Link>
-            <Link to="/register" className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
-            <button>
-              SIGN UP
-            </button>
-            </Link>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
+                SIGN IN
+              </Link>
+              <Link
+                to="/register"
+                className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
+                SIGN UP
+              </Link>
+            </>
+          )}
+          <Link to="/profile"><img src={profile} alt="Profile" className="w-8 h-8"/></Link>
           </div>
-
+          
           {/* Mobile menu button */}
           <div className="flex items-center sm:hidden">
             <button

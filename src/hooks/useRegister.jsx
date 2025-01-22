@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-// import { getRegister } from "../api/register"
 import axios from "axios"
 
 export const useRegister = () => {
