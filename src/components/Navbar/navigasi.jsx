@@ -34,24 +34,24 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="items-center hidden sm:flex sm:space-x-8">
-            <a
-              href="#play-together"
+            <Link
+              to="/sparring"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
               Play Together
-            </a>
-            <a
-              href="#sparring"
+            </Link>
+            <Link
+              href="/sparring"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
               Sparring
-            </a>
-            <a
-              to="#"
+            </Link>
+            <Link
+              to="/sparring"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
             booking Field
-            </a>
+            </Link>
           </div>
 
           {/* Authentication Buttons */}
