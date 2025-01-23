@@ -41,7 +41,7 @@ const Navbar = () => {
               Play Together
             </Link>
             <Link
-              href="/sparring"
+              to="/sparring"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
               Sparring
@@ -141,6 +141,19 @@ const Navbar = () => {
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="px-4 space-y-2">
+              { token? (
+                <>
+                <button onClick={handleLogout} className="w-full px-4 py-2 mb-1 text-white transition-colors bg-red-600 rounded-md hover:bg-red-700">
+                Log out
+                </button>
+                <button className="w-full px-4 py-2 mb-1 text-white transition-colors bg-red-600 rounded-md hover:bg-red-700">
+                  <Link to="/profile">
+                  Go to Profile
+                  </Link>
+                </button>
+                </>
+            ) : (
+                <> 
               <Link to="/login">
               <button className="w-full px-4 py-2 mb-1 text-white transition-colors bg-red-600 rounded-md hover:bg-red-700">
                 SIGN IN
@@ -151,6 +164,8 @@ const Navbar = () => {
                 SIGN UP
               </button>
               </Link>
+              </>
+            )}
             </div>
           </div>
         </div>
