@@ -21,13 +21,14 @@ const Navbar = () => {
         <div className="flex justify-between h-20">
           {/* Logo Section */}
           <div className="flex items-center flex-shrink-0">
-            <div className="flex items-center">
+            <div className="flex items-center flex-row">
               <Link to="/">
               <img
                 src={Logo}
                 alt="Sportivo Logo"
                 className="w-auto h-12"
                 />
+                <h3>SPORTIVO</h3>
               </Link>
             </div>
           </div>

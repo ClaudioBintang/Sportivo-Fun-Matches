@@ -1,4 +1,4 @@
-
+// import { getMe } from "../api/me";
 import { useState } from "react";
 import axios from "axios";
 export const useMe = () => {
@@ -7,15 +7,12 @@ export const useMe = () => {
 
     const getProfile = async () => {
         const token = localStorage.getItem("token");
-        if (!token){
-            setError("token not found");
-            return;
-        }
+        
         const config = { headers: { Authorization: `Bearer ${token}` } };
         try {
             const response = await axios.get("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/me", config);
-            console.log("response", response.data?.data);
-            setProfile(response.data?.data);
+            console.log("response", response.data);
+            setProfile(response.data);
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 if (error.response.status === 401) {
