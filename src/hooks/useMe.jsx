@@ -1,4 +1,4 @@
-
+// import { getMe } from "../api/me";
 import { useState } from "react";
 import axios from "axios";
 export const useMe = () => {
@@ -7,6 +7,10 @@ export const useMe = () => {
 
     const getProfile = async () => {
         const token = localStorage.getItem("token");
+        if (!token) {
+            setError("unAuthorized: token tidak ditemukan");
+            return
+        }
         const config = { headers: { Authorization: `Bearer ${token}` } };
         try {
             const response = await axios.get("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/me", config);

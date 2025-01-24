@@ -1,7 +1,7 @@
 import { useMe } from "../../hooks/useMe";
 import { useEffect } from "react";
 import Navbar from "../../components/Navbar/navigasi";
-
+import Footer from "../../components/Footer/footer";
 const Profilepage = () => {
     const {getProfile, profile, error} = useMe();
 
@@ -12,7 +12,8 @@ const Profilepage = () => {
     <>
     <Navbar/>
     <h1>hello, this is profil page</h1>
-    {error ? (
+        <div className="text-lg bg-white border rounded-lg font-semibold justify-center text-center">
+            {error ? (
                 <p style={{ color: "red" }}>{error}</p>
                 ) : (
                 <>
@@ -21,6 +22,8 @@ const Profilepage = () => {
                     <p>Bergabung pada: {profile?.created_at || "Tidak tersedia"}</p>
                 </>
                 )}
+        </div>
+    <Footer/>
     </>
     )
 }
