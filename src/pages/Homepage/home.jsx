@@ -9,24 +9,30 @@ const Homepage = () => {
     return (
     <>
     <Navbar/>
-      <div className="relative h-[60vh]">
-        <img src={hero} alt="Hero" className="object-cover" />
+      <div className="relative">
+        <img src={hero} alt="Hero" className="object-cover w-screen" />
+        <div>
+          <div className="absolute items-start text-center transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/4">
+            <h1 className="text-4xl font-bold text-white">Sportivo</h1>
+            <p className="mt-4 text-lg text-white">Find a sparring partner at the touch of finger</p>
+          </div>
+        </div>
       </div>
 
       {/* Search Section */}
-      <div className="container mx-auto px-4">
+      <div className="container px-4 mx-auto">
         <div className="relative -mt-8 bg-[#c23636] text-white rounded-lg">
-          <div className="flex flex-col md:flex-row items-center gap-4 p-4">
-            <div className="flex items-center gap-2 flex-1">
-              <label className="h-5 w-5" />
+          <div className="flex flex-col items-center gap-4 p-4 md:flex-row">
+            <div className="flex items-center flex-1 gap-2">
+              <label className="w-5 h-5" />
               <span>Activity</span>
             </div>
-            <div className="flex items-center gap-2 flex-1">
-              <label className="h-5 w-5" />
+            <div className="flex items-center flex-1 gap-2">
+              <label className="w-5 h-5" />
               <span>Choose City</span>
             </div>
-            <div className="flex items-center gap-2 flex-1">
-              <label className="h-5 w-5" />
+            <div className="flex items-center flex-1 gap-2">
+              <label className="w-5 h-5" />
               <span>Choose Sport</span>
             </div>
             <button className="bg-white text-[#c23636] hover:bg-gray-100 px-2 rounded-md">
@@ -37,8 +43,8 @@ const Homepage = () => {
       </div>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 gap-8">
+      <section className="container px-4 py-16 mx-auto">
+        <div className="grid gap-8 md:grid-cols-2">
           <div className="grid grid-cols-2 gap-4">
             <img
               src="/placeholder.svg?height=200&width=200"
@@ -93,8 +99,8 @@ const Homepage = () => {
 
       {/* Promotion Card */}
       <section className="bg-[#c23636] text-white py-16">
-        <div className="container mx-screen px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="container px-4 mx-screen">
+          <div className="grid items-center gap-8 md:grid-cols-2">
             <img
               src={football}
               alt="Soccer Players"
