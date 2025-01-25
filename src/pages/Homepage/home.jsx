@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/navigasi"
 import gplay from "../../assets/google-dark.png"
 import app from "../../assets/app-dark.png"
 import venue from "../../assets/venue-preview.png"
-import hero from "../../assets/ayoindonesia-greysiapolii.jpg"
+import hero from "../../assets/Banner Hero.png"
 import football from "../../assets/drawing football.png"
 const Homepage = () => {
     return (
