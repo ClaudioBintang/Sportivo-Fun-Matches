@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className="flex justify-between h-20">
           {/* Logo Section */}
           <div className="flex items-center flex-shrink-0">
-            <div className="flex items-center flex-row">
+            <div className="flex flex-row items-center">
               <Link to="/">
               <img
                 src={Logo}
@@ -121,24 +121,24 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="sm:hidden">
           <div className="pt-2 pb-3 space-y-1">
-            <a
-              href="#play-together"
+            <Link
+              to={"/sparring"}
               className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
               Play Together
-            </a>
-            <a
-              href="#sparring"
+            </Link>
+            <Link
+              to={"/sparring"}
               className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
               Sparring
-            </a>
-            <a
-              href="#booking-field"
+            </Link>
+            <Link
+              to={"/sparring"}
               className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
               booking Field
-            </a>
+            </Link>
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="px-4 space-y-2">
