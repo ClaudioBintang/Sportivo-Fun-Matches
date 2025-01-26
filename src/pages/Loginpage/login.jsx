@@ -9,7 +9,7 @@ import { useLogin } from "../../hooks/useLogin"
 
 const Loginpage = () => {
     
-  const {handleChange, usedLogin, loading, credentials} = useLogin();
+  const {handleChange, usedLogin, loading, credentials, message} = useLogin();
   
   useEffect(() => {
       usedLogin();
@@ -24,6 +24,8 @@ const Loginpage = () => {
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight">SIGN IN</h2>
+            {message.success && <p className="mt-2 font-mono text-green-500">{message.success}</p>}
+            {message.error && <p className="mt-2 font-mono text-red-500">{message.error}</p>}
           </div>
           <form className="space-y-6" onSubmit={usedLogin}>
             <div className="space-y-2">
