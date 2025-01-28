@@ -40,7 +40,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="pt-8 mt-8 text-sm text-center text-gray-600 border-t">© 2025 Sportivo. All right reserved</div>
+        <div className="pt-8 mt-8 text-sm text-center text-gray-600 border-t">© 2025 Sportivo. All right reserved. Made with ❤️ in Indonesia</div>
       </div>
     </footer>
     )

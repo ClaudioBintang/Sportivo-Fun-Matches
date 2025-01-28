@@ -3,8 +3,13 @@ import Navbar from "../../components/Navbar/navigasi"
 import gplay from "../../assets/google-dark.png"
 import app from "../../assets/app-dark.png"
 import venue from "../../assets/venue-preview.png"
-import hero from "../../assets/Banner Hero.png"
+import hero from "../../assets/Banner.png"
 import football from "../../assets/drawing football.png"
+import Filter from "../../components/Filter/filter"
+import timnas from "../../assets/Timnas indo.jpg"
+import yahoo from "../../assets/Yahoo Sports.jpg"
+import basket from "../../assets/Sports.jpg"
+import soccer from "../../assets/Soccer Girl.jpg"
 const Homepage = () => {
     return (
     <>
@@ -12,15 +17,16 @@ const Homepage = () => {
       <div className="relative">
         <img src={hero} alt="Hero" className="object-cover w-screen" />
         <div>
-          <div className="absolute items-start text-center transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/4">
+          <div className="absolute items-start ml-8 text-center transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/4">
             <h1 className="text-4xl font-bold text-white">Sportivo</h1>
-            <p className="mt-4 text-lg text-white">Find a sparring partner at the touch of finger</p>
+            <p className="flex-wrap mt-4 text-lg font-semibold text-white">Platfrom for sport lovers who want to find a sport venue,<br /> or find friends to play with. Sports are made easy and fun</p>
           </div>
         </div>
       </div>
 
       {/* Search Section */}
-      <div className="container px-4 mx-auto">
+      <Filter/>
+      {/* <div className="container px-4 mx-auto">
         <div className="relative -mt-8 bg-[#c23636] text-white rounded-lg">
           <div className="flex flex-col items-center gap-4 p-4 md:flex-row">
             <div className="flex items-center flex-1 gap-2">
@@ -40,45 +46,46 @@ const Homepage = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Features Section */}
       <section className="container px-4 py-16 mx-auto">
         <div className="grid gap-8 md:grid-cols-2">
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="/placeholder.svg?height=200&width=200"
+              src={timnas}
               alt="Sport 1"
               width={200}
               height={200}
               className="rounded-lg"
             />
             <img
-              src="/placeholder.svg?height=200&width=200"
+              src={yahoo}
               alt="Sport 2"
               width={200}
               height={200}
               className="rounded-lg"
             />
             <img
-              src="/placeholder.svg?height=200&width=200"
+              src={basket}
               alt="Sport 3"
               width={200}
               height={200}
               className="rounded-lg"
             />
             <img
-              src="/placeholder.svg?height=200&width=200"
+              src={soccer}
               alt="Sport 4"
               width={200}
               height={200}
               className="rounded-lg"
             />
-          </div>
+          </div>  
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold">Find a sparring partner at the touch of finger</h2>
+            <h4 className="text-lg font-semibold" style={{ color: "#8A1010" }}>FIND A SPARRING OPPONENT</h4>
+            <h2 className="text-3xl font-bold">Find a sparring partner opponent in just a tap of a finger</h2>
             <p className="text-gray-600">
-            Now you don't have to bother looking for sparring partners. Easily make new friends and opponents every week.
+            Now you don't have to bother looking for sparring partners. Easily make new friends and opponents every week only on the SPORTIVO App!
             </p>
           </div>
           <div className="space-y-4 mt-28">

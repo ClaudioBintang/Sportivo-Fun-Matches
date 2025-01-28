@@ -4,6 +4,8 @@ import Loginpage from './pages/Loginpage/login'
 import Registpage from './pages/Registpage/register'
 import Profilepage from './pages/Profilepage/profile'
 import Sparringpage from './pages/Sparringpage/sparring'
+import Paymentpage from './pages/Paymentpage/payment'
+import Detailsparring from './pages/Detailsparring/detail'
 import './index.css'
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path='/register' element={<Registpage/>}/>
         <Route path='/profile' element={<Profilepage/>}/>
         <Route path='/sparring' element={<Sparringpage/>}/>
+        <Route path='/detailsparring' element={<Detailsparring/>}/>
+        <Route path='/payment' element={<Paymentpage/>}/>
       </Routes>
       </BrowserRouter>
     </>

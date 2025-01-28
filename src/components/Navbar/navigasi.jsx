@@ -1,13 +1,18 @@
-import { Link, Navigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Logo from "../../assets/sportivo logo.png"
-import profile from "../../assets/profile.png"
-import { useState } from "react"
+import avatar from "../../assets/soccer-player.png"
+import { useMe } from "../../hooks/useMe"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
+    const {getProfile, profile, error} = useMe();
 
+    useEffect(() => {
+        getProfile();
+    }, [])
     const handleLogout = () => {
       localStorage.clear();
       setTimeout(() => {
@@ -28,7 +33,6 @@ const Navbar = () => {
                 alt="Sportivo Logo"
                 className="w-auto h-12"
                 />
-                <h3>SPORTIVO</h3>
               </Link>
             </div>
           </div>
@@ -65,8 +69,9 @@ const Navbar = () => {
               Logout
             </button>
             <button>
-              <Link to="/profile"><img src={profile} alt="Profile" className="w-8 h-8"/></Link>
+              <Link to="/profile"><img src={avatar} alt="Profile" className="w-8 h-8"/></Link>
               </button>
+              <p className="text-sm italic font-bold">{profile.name}</p>
               </>
           ) : (
             <>
