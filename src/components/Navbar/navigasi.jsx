@@ -63,15 +63,15 @@ const Navbar = () => {
           <div className="hidden sm:flex sm:items-center sm:space-x-4">
           {token ? (
             <>
-            <button
-              onClick={handleLogout}
-              className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
-              Logout
-            </button>
             <button>
               <Link to="/profile"><img src={avatar} alt="Profile" className="w-8 h-8"/></Link>
               </button>
               <p className="text-sm italic font-bold">{profile.name}</p>
+            <button
+              onClick={handleLogout}
+              className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600 font-medium">
+              Logout
+            </button>
               </>
           ) : (
             <>
