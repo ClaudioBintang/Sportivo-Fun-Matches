@@ -46,7 +46,7 @@ const Navbar = () => {
               Play Together
             </Link>
             <Link
-              to="/sparring"
+              to="/activity"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
               Sparring
@@ -69,7 +69,7 @@ const Navbar = () => {
               <p className="text-sm italic font-bold">{profile.name}</p>
             <button
               onClick={handleLogout}
-              className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600 font-medium">
+              className="px-6 py-2 font-medium text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
               Logout
             </button>
               </>

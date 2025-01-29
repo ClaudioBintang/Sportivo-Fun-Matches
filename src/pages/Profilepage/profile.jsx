@@ -19,38 +19,38 @@ const Profilepage = () => {
                     <p>Nama: {profile?.name || "Tidak tersedia"}</p>
                     <p>Email: {profile?.email || "Tidak tersedia"}</p>
                     <p>Bergabung pada: {profile?.created_at || "Tidak tersedia"}</p>
+                    <p>{profile.role}</p>
                 </>
                 )}
         </div>
-    {/* <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       <div className="h-16 bg-[#B71C1C] w-full"></div>
       <div className="container px-4 py-8 mx-auto">
         <div className="max-w-3xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
           <div className="flex">
             <div className="w-1/3 border-r">
               <div
-                className={`py-3 px-4 cursor-pointer ${activeTab === "profile" ? "bg-gray-100" : ""}`}
-                onClick={() => setActiveTab("profile")}
+                className={`py-3 px-4 cursor-pointer `}
+                // onClick={}
               >
                 Data Diri
               </div>
               <div
-                className={`py-3 px-4 cursor-pointer ${activeTab === "password" ? "bg-gray-100" : ""}`}
-                onClick={() => setActiveTab("password")}
+                className={`py-3 px-4 cursor-pointer`}
+                // onClick={}
               >
                 Ubah Kata Sandi
               </div>
             </div>
 
             <div className="w-2/3 p-6">
-              {activeTab === "profile" && (
                 <div>
                   <h2 className="mb-4 text-2xl font-semibold">Profil</h2>
                   <div className="space-y-4">
                     <div>
                       <label className="block mb-1 text-sm font-medium text-gray-700">Nama Lengkap *</label>
                       <input
-                        type="text"
+                        type={profile.name}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md"
                         placeholder="Nama Lengkap"
                       />
@@ -84,52 +84,52 @@ const Profilepage = () => {
                     </button>
                   </div>
                 </div>
-              )}
+              
 
-              {activeTab === "password" && (
+              
                 <div>
                   <h2 className="mb-4 text-2xl font-semibold">Ubah Kata Sandi</h2>
                   <div className="space-y-4">
                     <div className="relative">
                       <input
-                        type={showOldPassword ? "text" : "password"}
+                        // type={showOldPassword ? "text" : "password"}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md"
                         placeholder="Masukkan Kata Sandi Lama"
                       />
                       <button
                         type="button"
                         className="absolute inset-y-0 right-0 flex items-center pr-3 text-sm leading-5"
-                        onClick={() => setShowOldPassword(!showOldPassword)}
+                        // onClick={() => setShowOldPassword(!showOldPassword)}
                       >
-                        {showOldPassword ? "Hide" : "Show"}
+                        {/* {showOldPassword ? "Hide" : "Show"} */}
                       </button>
                     </div>
                     <div className="relative">
                       <input
-                        type={showNewPassword ? "text" : "password"}
+                        // type={showNewPassword ? "text" : "password"}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md"
                         placeholder="Kata Sandi Baru"
                       />
                       <button
                         type="button"
                         className="absolute inset-y-0 right-0 flex items-center pr-3 text-sm leading-5"
-                        onClick={() => setShowNewPassword(!showNewPassword)}
+                        // onClick={() => setShowNewPassword(!showNewPassword)}
                       >
-                        {showNewPassword ? "Hide" : "Show"}
+                        {/* {showNewPassword ? "Hide" : "Show"}  */}
                       </button>
                     </div>
                     <div className="relative">
                       <input
-                        type={showConfirmPassword ? "text" : "password"}
+                        // type={showConfirmPassword ? "text" : "password"}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md"
                         placeholder="Ketik Ulang Kata Sandi Baru"
                       />
                       <button
                         type="button"
                         className="absolute inset-y-0 right-0 flex items-center pr-3 text-sm leading-5"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        // onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                       >
-                        {showConfirmPassword ? "Hide" : "Show"}
+                        {/* {showConfirmPassword ? "Hide" : "Show"} */}
                       </button>
                     </div>
                     <button className="px-4 py-2 text-gray-700 bg-gray-300 rounded-md hover:bg-gray-400">
@@ -137,12 +137,11 @@ const Profilepage = () => {
                     </button>
                   </div>
                 </div>
-              )}
             </div>
           </div>
         </div>
       </div>
-    </div> */}
+    </div>
     <Footer/>
     </>
     )

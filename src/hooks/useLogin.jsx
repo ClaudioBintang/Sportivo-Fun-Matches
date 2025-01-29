@@ -21,13 +21,13 @@ export const useLogin = () => {
         try {
             const response = await axios.post('https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/login', credentials);
             console.log("response", response.data?.data?.token);
+            setCredentials(response.data);
             localStorage.setItem("token", response.data?.data?.token);
             setMessage({success: "Redirecting..."});
             setTimeout(() => navigate("/"), 1000);
-            setCredentials(response.data);
         } catch (error) {
             console.log(error);
-            setMessage({success: "", error: "Invalid email or password"});
+            setMessage({error: "Invalid email or password or you dont have an account yet."});
         } finally {
             setLoading(false);
         }

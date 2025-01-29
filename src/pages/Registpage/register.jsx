@@ -11,17 +11,17 @@ const Registpage = () => {
     const {handleChange, usedRegister, loading, credentials, success, error} = useRegister();
     
     useEffect(() => {
-     usedRegister();
+        usedRegister();
     }, []);   
     return (
 <>
-        {success && <p className="text-green-500">{success}</p>}
-        {error && <p className="text-red-500">{error}</p>}
     {/* Login Side - Section Left */}
     <div className="flex flex-col min-h-screen lg:flex-row">
       <div className="flex items-center justify-center flex-1 p-6 lg:p-12">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
+        {success && <p className="text-green-500">{success}</p>}
+        {error && <p className="text-red-500">{error}</p>}
             <h2 className="text-2xl font-bold tracking-tight">SIGN UP</h2>
           </div>
           
@@ -64,26 +64,25 @@ const Registpage = () => {
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="confirmPassword" className="text-sm font-medium">Confirm Password</label>
+              <label htmlFor="c_password" className="text-sm font-medium">Confirm Password</label>
               <input
-                id="confirmPassword"
-                name="confirmPassword"
+                id="c_password"
+                name="c_password"
                 type="password"
                 required
-                value={credentials.c_Password}
+                value={credentials.c_password}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/50"
               />
     
             </div>
             <div className="space-y-2">
-              <label htmlFor="phoneNumber" className="text-sm font-medium">Phone Number</label>
+              <label htmlFor="phone_number" className="text-sm font-medium">Phone Number</label>
               <input
-                id="phoneNumber"
-                name="phoneNumber"
+                id="phone_number"
+                name="phone_number"
                 type="tel"
-                required
-                value={credentials.phoneNumber}
+                value={credentials.phone_number}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/50"
               />
@@ -97,7 +96,7 @@ const Registpage = () => {
                 id="role"
                 type="text"
                 required
-                value={credentials.role}
+                value={credentials.role || "user"}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/50">
                 <option value="user">User</option>
