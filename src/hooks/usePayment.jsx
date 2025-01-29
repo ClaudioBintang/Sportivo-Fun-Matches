@@ -8,7 +8,7 @@ export const usePayment = () => {
         try {
             const response = await axios.get(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/payment-methods`);
             console.log(response.data.result);
-            setPayment(response.data);
+            setPayment(response.data.result);
         } catch (error) {
             console.log(error);
             

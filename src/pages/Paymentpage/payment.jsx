@@ -8,9 +8,18 @@ import { usePayment } from "../../hooks/usePayment"
 import { useEffect } from "react"
 const Paymentpage = () => {
   const {getPayment, payment} = usePayment();
+  
+  const mappingImage = {
+  "Bank BRI": BRI,
+  BCA: BCA,
+  "Bank BNI": BNI,
+  "Bank Mandiri": Mandiri
+  }
   useEffect(() => {
     getPayment();
   }, [])
+  
+
     return (
 <>
   <Navbar/>
@@ -60,44 +69,22 @@ const Paymentpage = () => {
           </div>
 
           {/* Payment Options */}
+          
           <div className="space-y-3">
-            <label className="flex items-center justify-between p-4 bg-white border rounded-lg cursor-pointer hover:bg-gray-50">
-              <div className="flex items-center">
-                <input type="radio" name="payment" value="bca" className="mr-3" />
-                <span>BCA</span>
-              </div>
-              <img src={payment.image_url} alt="BCA" width={60} height={20} />
-            </label>
-
-            <label className="flex items-center justify-between p-4 bg-white border rounded-lg cursor-pointer hover:bg-gray-50">
-              <div className="flex items-center">
-                <input type="radio" name="payment" value="bri" className="mr-3" />
-                <span>BRI</span>
-              </div>
-              <img src={BRI} alt="BRI" width={60} height={20} />
-            </label>
-
-            <label className="flex items-center justify-between p-4 bg-white border rounded-lg cursor-pointer hover:bg-gray-50">
+            {payment.map((item, index) => (
+            <label key={index} className="flex items-center justify-between p-4 bg-white border rounded-lg cursor-pointer hover:bg-gray-50">
               <div className="flex items-center">
                 <input type="radio" name="payment" value="mandiri" className="mr-3" />
-                <span>Mandiri</span>
+                <span>{item.name}</span>
               </div>
-              <img src={Mandiri} alt="Mandiri" width={60} height={20} />
+              <img src={mappingImage[item.name]} alt="img" width={60} height={20} />
             </label>
-
-            <label className="flex items-center justify-between p-4 bg-white border rounded-lg cursor-pointer hover:bg-gray-50">
-              <div className="flex items-center">
-                <input type="radio" name="payment" value="bni" className="mr-3" />
-                <span>BNI</span>
-              </div>
-              <img src={BNI} alt="BNI" width={60} height={20} />
-            </label>
+            ))}
           </div>
 
           <button
             className="w-full mt-6 bg-[#c23636] hover:bg-[#a62e2e] text-white py-3 px-6 rounded-lg font-medium transition-colors"
-            onClick={() => console.log("Payment processed")}
-          >
+            onClick={() => console.log("Payment processed")}>
             Payment
           </button>
         </section>

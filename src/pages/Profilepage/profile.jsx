@@ -1,5 +1,5 @@
 import { useMe } from "../../hooks/useMe";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Navbar from "../../components/Navbar/navigasi";
 import Footer from "../../components/Footer/footer";
 const Profilepage = () => {
@@ -22,9 +22,8 @@ const Profilepage = () => {
                 </>
                 )}
         </div>
-    <div className="min-h-screen bg-white">
+    {/* <div className="min-h-screen bg-white">
       <div className="h-16 bg-[#B71C1C] w-full"></div>
-
       <div className="container px-4 py-8 mx-auto">
         <div className="max-w-3xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
           <div className="flex">
@@ -143,7 +142,7 @@ const Profilepage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
     <Footer/>
     </>
     )
