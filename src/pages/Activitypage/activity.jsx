@@ -6,10 +6,11 @@ import Footer from "../../components/Footer/footer";
 import football from "../../assets/drawing football.png";
 import gplay from "../../assets/google-dark.png";
 import app from "../../assets/app-dark.png";
+
 const ActivityPage = () => {
   const { activity, loading, error } = useActivity();
   const navigate = useNavigate();
-
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 

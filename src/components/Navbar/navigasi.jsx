@@ -55,7 +55,7 @@ const Navbar = () => {
               to="/activity"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
-            About Us
+            About us
             </Link>
           </div>
 

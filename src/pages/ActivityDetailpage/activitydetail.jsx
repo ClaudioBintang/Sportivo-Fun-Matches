@@ -32,7 +32,7 @@ const ActivityDetailpage = () => {
 
             {/* Right Side - Team Details */}
             <div className="w-full md:w-2/3">
-              <h1 className="mb-4 text-3xl font-playfair">{activity.title}</h1>
+              <h1 className="mb-4 text-3xl font-medium">{activity.title}</h1>
 
               <div className="flex items-center gap-6 mb-6 text-gray-600">
                 <div className="flex items-center gap-2">
@@ -47,7 +47,7 @@ const ActivityDetailpage = () => {
 
               <div className="flex flex-col items-start justify-between gap-4 mb-8 md:flex-row md:items-center">
                 <div className="text-2xl font-bold">Rp {activity.price?.toLocaleString()}</div>
-                <Link to="/payment">
+                <Link to={`/payment/${activity.id}`}>
                   <button className="bg-[#c23636] text-white px-8 py-3 rounded-lg hover:bg-[#a62e2e] transition-colors">
                     Take the Match
                   </button>

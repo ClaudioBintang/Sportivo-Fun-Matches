@@ -6,9 +6,19 @@ import Navbar from "../../components/Navbar/navigasi"
 import Footer from "../../components/Footer/footer"
 import { usePayment } from "../../hooks/usePayment"
 import { useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { useActivityDetail } from "../../hooks/useActivityDetail"
 const Paymentpage = () => {
-  const {getPayment, payment} = usePayment();
+  const { id } = useParams();
+  const { activity, loading, error } = useActivityDetail(id);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Error loading sparring details</div>;
+  }
   
+  const {getPayment, payment} = usePayment();
   const mappingImage = {
   "Bank BRI": BRI,
   BCA: BCA,
@@ -24,7 +34,7 @@ const Paymentpage = () => {
 <>
   <Navbar/>
   <main className="container max-w-6xl px-4 py-8 mx-auto">
-      <h1 className="mb-8 text-3xl font-bold">Payment</h1>
+      <h1 className="mb-8 text-3xl font-bold">Payment {activity.title}</h1>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {/* Activity Details Section */}
