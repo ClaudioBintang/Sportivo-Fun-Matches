@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Homepage from './pages/Homepage/home'
-import Loginpage from './pages/Loginpage/login'
 import Registpage from './pages/Registpage/register'
+import Loginpage from './pages/Loginpage/login'
+import Homepage from './pages/Homepage/home'
 import Profilepage from './pages/Profilepage/profile'
-import Sparringpage from './pages/Sparringpage/sparring'
-import Paymentpage from './pages/Paymentpage/payment'
-import Detailsparring from './pages/Detailsparring/detail'
+import ActivityDetailpage from './pages/ActivityDetailpage/activitydetail'
 import Activitypage from './pages/Activitypage/activity'
+import Paymentpage from './pages/Paymentpage/payment'
 import './index.css'
 
 function App() {
@@ -19,10 +18,9 @@ function App() {
         <Route path='/login' element={<Loginpage/>}/>
         <Route path='/register' element={<Registpage/>}/>
         <Route path='/profile' element={<Profilepage/>}/>
-        {/* <Route path='/sparring' element={<Sparringpage/>}/> */}
-        <Route path='/detailsparring' element={<Detailsparring/>}/>
-        <Route path='/payment' element={<Paymentpage/>}/>
         <Route path='/activity' element={<Activitypage/>}/>
+        <Route path='/activity/:id' element={<ActivityDetailpage/>}/>
+        <Route path='/payment/:id' element={<Paymentpage/>}/>
       </Routes>
       </BrowserRouter>
     </>

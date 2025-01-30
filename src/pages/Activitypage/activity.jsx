@@ -1,33 +1,72 @@
-import React from 'react'
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-const Activitypage = () => {
-    const [activity, setActivity] = useState([]);
-    const useActivity = async () => {
-        const token = localStorage.getItem("token");
-        try {
-            const response = await axios.get("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-activities", {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                accept: "application/json",
-                "Content-Type": "application/json",
-              },
-            });
-            console.log(response.data.result.data);
-            setActivity(response.data.result.data);
-          } catch (error) {
-            console.log(error);
-          }  
-    }
-    useEffect(() => {
-        useActivity();
-    }, [])
-  return (
-    <div>
-      <h1>test</h1>
-      
-    </div>
-  )
-}
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useActivity } from "../../hooks/useActivity";
+import Navbar from "../../components/Navbar/navigasi";
+import Footer from "../../components/Footer/footer";
+import football from "../../assets/drawing football.png";
+import gplay from "../../assets/google-dark.png";
+import app from "../../assets/app-dark.png";
+const ActivityPage = () => {
+  const { activity, loading, error } = useActivity();
+  const navigate = useNavigate();
 
-export default Activitypage
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  return (
+    <>
+    <Navbar />
+    <div>
+      <div className="bg-[#B71C1C] text-white py-16 text-center relative mb-6">
+          <div className="absolute inset-0 bg-[url('/wave-bg.svg')] bg-cover bg-center opacity-10" />
+          <h1 className="relative z-10 text-4xl font-bold md:text-5xl">CARI LAWAN SPARRING</h1>
+        </div>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {activity.map((item) => (
+          <div
+            key={item.id}
+            className="overflow-hidden transition bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg"
+            onClick={() => navigate(`/activity/${item.id}`)}>
+            <img src={item.image} alt={item.title} className="object-cover w-full h-48" />
+            <div className="p-4">
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <p className="text-gray-600">{item.category}</p>
+              <p className="text-gray-600">{item.location}</p>
+              <p className="text-gray-600">Rp {item.price.toLocaleString()}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    {/* Promotion Card */}
+          <section className="bg-[#c23636] text-white py-16 mt-6">
+            <div className="container px-4 mx-screen">
+              <div className="grid items-center gap-8 md:grid-cols-2">
+                <img
+                  src={football}
+                  alt="Soccer Players"
+                  width={300}
+                  height={300}
+                  className="mx-auto"
+                />
+                <div className="space-y-4">
+                  <h2 className="text-3xl font-bold">SPORTIVO</h2>
+                  <h3 className="text-xl font-semibold">Let's find your partner match and Play Together!</h3>
+                  <p>Puluhan ribu teman baru sudah menantimu di lapangan,
+                  yuk download Aplikasi SPORTIVO sekarang juga!</p>
+                  <button className="inline-block pr-1">
+                    <img src={gplay} alt="play store" className="h-[42px] hover:opacity-90" />
+                  </button>
+                  <button className="inline-block pr-1">
+                    <img src={app} alt="app store" className="h-[42px] hover:opacity-90" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+    <Footer />
+    </ >
+  );
+};
+
+export default ActivityPage;

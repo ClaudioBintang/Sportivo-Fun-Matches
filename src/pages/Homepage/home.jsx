@@ -25,29 +25,7 @@ const Homepage = () => {
       </div>
 
       {/* Search Section */}
-      <Filter/>
-      {/* <div className="container px-4 mx-auto">
-        <div className="relative -mt-8 bg-[#c23636] text-white rounded-lg">
-          <div className="flex flex-col items-center gap-4 p-4 md:flex-row">
-            <div className="flex items-center flex-1 gap-2">
-              <label className="w-5 h-5" />
-              <span>Activity</span>
-            </div>
-            <div className="flex items-center flex-1 gap-2">
-              <label className="w-5 h-5" />
-              <span>Choose City</span>
-            </div>
-            <div className="flex items-center flex-1 gap-2">
-              <label className="w-5 h-5" />
-              <span>Choose Sport</span>
-            </div>
-            <button className="bg-white text-[#c23636] hover:bg-gray-100 px-2 rounded-md">
-              Temukan
-            </button>
-          </div>
-        </div>
-      </div> */}
-
+      <Filter />
       {/* Features Section */}
       <section className="container px-4 py-16 mx-auto">
         <div className="grid gap-8 md:grid-cols-2">

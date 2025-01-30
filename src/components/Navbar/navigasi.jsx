@@ -40,7 +40,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="items-center hidden sm:flex sm:space-x-8">
             <Link
-              to="/sparring"
+              to="/activity"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
               Play Together
@@ -52,10 +52,10 @@ const Navbar = () => {
               Sparring
             </Link>
             <Link
-              to="/sparring"
+              to="/activity"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
-            booking Field
+            About Us
             </Link>
           </div>
 
@@ -127,19 +127,19 @@ const Navbar = () => {
         <div className="sm:hidden">
           <div className="pt-2 pb-3 space-y-1">
             <Link
-              to={"/sparring"}
+              to={"/activity"}
               className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
               Play Together
             </Link>
             <Link
-              to={"/sparring"}
+              to={"/activity"}
               className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
               Sparring
             </Link>
             <Link
-              to={"/sparring"}
+              to={"/activity"}
               className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
               booking Field
