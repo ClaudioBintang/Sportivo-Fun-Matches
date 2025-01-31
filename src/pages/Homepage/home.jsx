@@ -78,8 +78,9 @@ const Homepage = () => {
           </div>
           <div>
             <img src={venue} alt="venue-preview" />
-          </div>
+          </div> 
         </div>
+        
       </section>
 
       {/* Promotion Card */}

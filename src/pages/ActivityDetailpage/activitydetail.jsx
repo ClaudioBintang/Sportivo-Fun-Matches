@@ -67,9 +67,27 @@ const ActivityDetailpage = () => {
               </div>
             </div>
           </div>
+          {/* Additional Info */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="flex items-center gap-3">
+              <Calendar className="w-6 h-6" />
+              <div>
+                <h3 className="font-bold">Date & Time</h3>
+                <p className="text-gray-600">{activity.activity_date}</p>
+                <p className="text-gray-600">{activity.start_time} - {activity.end_time}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <MapPin className="w-6 h-6" />
+              <div>
+                <h3 className="font-bold">Location</h3>
+                <p className="text-gray-600">View on map</p>
+              </div>
+            </div>
+          </div>
 
           {/* Map Section */}
-          <div className="mb-8">
+          <div className="mt-8 mb-8">
             <div className="aspect-[16/9] bg-gray-100 rounded-lg overflow-hidden">
                 <iframe
                   src={activity.map_url}
@@ -82,23 +100,6 @@ const ActivityDetailpage = () => {
             </div>
           </div>
 
-          {/* Additional Info */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="flex items-center gap-3">
-              <Calendar className="w-6 h-6" />
-              <div>
-                <h3 className="font-bold">Date & Time</h3>
-                <p className="text-gray-600">{activity.activity_date}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="w-6 h-6" />
-              <div>
-                <h3 className="font-bold">Location</h3>
-                <p className="text-gray-600">View on map</p>
-              </div>
-            </div>
-          </div>
         </div>
       </main>
       <Footer />

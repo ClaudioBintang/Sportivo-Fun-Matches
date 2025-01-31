@@ -6,6 +6,7 @@ import Profilepage from './pages/Profilepage/profile'
 import ActivityDetailpage from './pages/ActivityDetailpage/activitydetail'
 import Activitypage from './pages/Activitypage/activity'
 import Paymentpage from './pages/Paymentpage/payment'
+import Invoicepage from './pages/Invoicepage/invoice'
 import './index.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/activity' element={<Activitypage/>}/>
         <Route path='/activity/:id' element={<ActivityDetailpage/>}/>
         <Route path='/payment/:id' element={<Paymentpage/>}/>
+        <Route path='/invoice' element={<Invoicepage/>}/>
       </Routes>
       </BrowserRouter>
     </>

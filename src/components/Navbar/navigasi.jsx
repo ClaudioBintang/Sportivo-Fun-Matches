@@ -21,7 +21,7 @@ const Navbar = () => {
     }
     return (
 <>
-<nav className="bg-white shadow-sm">
+<nav className="sticky top-0 z-20 w-screen bg-white shadow-sm">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           {/* Logo Section */}
@@ -51,12 +51,12 @@ const Navbar = () => {
               style={{ fontFamily: "Georgia, serif" }}>
               Sparring
             </Link>
-            <Link
-              to="/activity"
+            <a
+              href="/#about"
               className="px-3 py-2 text-lg font-medium text-gray-700 hover:text-gray-900"
               style={{ fontFamily: "Georgia, serif" }}>
             About us
-            </Link>
+            </a>
           </div>
 
           {/* Authentication Buttons */}

@@ -4,17 +4,19 @@ import Navbar from "../../components/Navbar/navigasi";
 import Footer from "../../components/Footer/footer";
 import { usePaymentMethod } from "../../hooks/usePaymentMethod";
 import { useActivityDetail } from "../../hooks/useActivityDetail";
+import useTransaction from "../../hooks/useTransaction";
 // Import Logo Bank
 import BRI from "../../assets/BRI.png";
 import BCA from "../../assets/BCA.png";
 import BNI from "../../assets/BNI.png";
 import Mandiri from "../../assets/Mandiri.svg";
 
-const PaymentPage = () => {
+const TransactionPage = () => {
   const { id } = useParams();
-  const { activity, loading, error } = useActivityDetail(id);
-  const { getPayment, payment } = usePaymentMethod();
-  
+  const { activity, loading: activityLoading, error: activityError } = useActivityDetail(id);
+  const { getPayment, payment, loading: paymentLoading, error: paymentError } = usePaymentMethod();
+  const { createTransaction, loading: transactionLoading, error: transactionError, success } = useTransaction();
+
   // State untuk menyimpan metode pembayaran yang dipilih
   const [selectedPayment, setSelectedPayment] = useState(null);
 
@@ -28,25 +30,24 @@ const PaymentPage = () => {
 
   useEffect(() => {
     getPayment();
-  }, [id]); // Fetch ulang data jika ID berubah
+  }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error loading sparring details</div>;
-
-  const handlePayment = () => {
+  const handleTransaction = () => {
     if (!selectedPayment) {
       alert("Please select a payment method first.");
       return;
     }
-    console.log("Processing payment with:", selectedPayment);
-    // Lanjutkan dengan proses pembayaran
+    createTransaction(selectedPayment, id);
   };
+
+  if (activityLoading || paymentLoading) return <div>Loading...</div>;
+  if (activityError || paymentError) return <div>Error loading transaction details</div>;
 
   return (
     <>
       <Navbar />
       <main className="container max-w-6xl px-4 py-8 mx-auto">
-        <h1 className="mb-8 text-3xl font-bold">Payment for: <span className="">{activity.title}</span></h1>
+        <h1 className="mb-8 text-3xl font-bold">Transaction for: <span className="">{activity.title}</span></h1>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* Activity Details Section */}
@@ -98,11 +99,11 @@ const PaymentPage = () => {
                     <input 
                       type="radio" 
                       name="payment" 
-                      value={item.name} 
+                      value={item.id} 
                       className="mr-3" 
-                      onChange={() => setSelectedPayment(item.name)} 
+                      onChange={() => setSelectedPayment(item.id)} 
                     />
-                    <span>{item.name}</span>
+                    <span className="font-medium">{item.name}</span>
                   </div>
                   <img src={mappingImage[item.name]} alt={item.name} width={60} height={20} />
                 </label>
@@ -111,11 +112,14 @@ const PaymentPage = () => {
 
             <button
               className="w-full mt-6 bg-[#c23636] hover:bg-[#a62e2e] text-white py-3 px-6 rounded-lg font-medium transition-colors"
-              onClick={handlePayment}
-              disabled={!selectedPayment} // Disable jika belum pilih metode pembayaran
+              onClick={handleTransaction}
+              disabled={!selectedPayment || transactionLoading} // Disable jika belum pilih metode pembayaran atau masih loading
             >
-              Confirm Payment
+              {transactionLoading ? "Processing..." : "Confirm Transaction"}
             </button>
+
+            {transactionError && <p className="mt-3 text-red-500">{transactionError}</p>}
+            {success && <p className="mt-3 text-green-500">Transaction successful!</p>}
           </section>
         </div>
       </main>
@@ -124,4 +128,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default TransactionPage;
