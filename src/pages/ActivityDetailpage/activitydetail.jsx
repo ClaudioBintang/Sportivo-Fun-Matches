@@ -48,20 +48,20 @@ const ActivityDetailpage = () => {
               <div className="flex flex-col items-start justify-between gap-4 mb-8 md:flex-row md:items-center">
                 <div className="text-2xl font-bold">Rp {activity.price?.toLocaleString()}</div>
                 <Link to={`/payment/${activity.id}`}>
-                  <button className="bg-[#c23636] text-white px-8 py-3 rounded-lg hover:bg-[#a62e2e] transition-colors">
+                  <button className="bg-[#c23636] text-white px-8 py-3 rounded-lg hover:bg-[#a62e2e] transition-colors font-semibold">
                     Take the Match
                   </button>
                 </Link>
               </div>
 
               {/* Description Section */}
-              <div className="mb-8">
+              <div className="pt-2 mb-8 border-t">
                 <h2 className="mb-3 font-bold">Sparring Description</h2>
                 <p className="text-gray-600">{activity.description}</p>
               </div>
 
               {/* Venue Section */}
-              <div>
+              <div className="pt-2 mb-8 border-t">
                 <h2 className="mb-3 font-bold">Venue Location</h2>
                 <p className="mb-4 text-gray-600">{activity.address}</p>
               </div>
