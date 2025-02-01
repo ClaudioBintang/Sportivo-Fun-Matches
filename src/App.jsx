@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ProtectedRoute from './routes/protectedroute'
 import Registpage from './pages/Registpage/register'
 import Loginpage from './pages/Loginpage/login'
 import Homepage from './pages/Homepage/home'
@@ -10,19 +11,21 @@ import Invoicepage from './pages/Invoicepage/invoice'
 import './index.css'
 
 function App() {
-  
+  const isAuthenticated = localStorage.getItem("token");
   return (
     <>
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<Homepage/>}/>
         <Route path='/login' element={<Loginpage/>}/>
-        <Route path='/register' element={<Registpage/>}/>
         <Route path='/profile' element={<Profilepage/>}/>
         <Route path='/activity' element={<Activitypage/>}/>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
+        <Route path='/register' element={<Registpage/>}/>
         <Route path='/activity/:id' element={<ActivityDetailpage/>}/>
         <Route path='/payment/:id' element={<Paymentpage/>}/>
         <Route path='/invoice' element={<Invoicepage/>}/>
+        </Route>
       </Routes>
       </BrowserRouter>
     </>
