@@ -14,15 +14,21 @@ const Homepage = () => {
     return (
     <>
     <Navbar/>
-      <div className="relative">
-        <img src={hero} alt="Hero" className="object-cover w-screen" />
-        <div>
-          <div className="absolute items-start ml-8 text-center transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/4">
-            <h1 className="text-4xl font-bold text-white">Sportivo</h1>
-            <p className="flex-wrap mt-4 text-lg font-semibold text-white">Platfrom for sport lovers who want to find a sport venue,<br /> or find friends to play with. Sports are made easy and fun</p>
-          </div>
-        </div>
+    <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+      <img
+        src={hero}
+        alt="Hero"
+        className="absolute inset-0 object-cover w-full h-full"
+      />
+      
+      <div className="relative flex flex-col items-start justify-center h-full px-6 bg-black bg-opacity-10 text-start">
+        <h1 className="text-3xl font-bold text-white md:text-5xl lg:text-6xl">Sportivo</h1>
+        <p className="max-w-2xl mt-4 text-base font-medium text-white md:text-lg lg:text-xl">
+          Platform for sport lovers who want to find a sport venue, or find friends to play with. <br className="hidden md:block" />
+          Sports are made easy and fun.
+        </p>
       </div>
+    </div>
 
       {/* Search Section */}
       <Filter />

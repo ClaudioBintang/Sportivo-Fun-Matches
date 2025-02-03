@@ -111,7 +111,6 @@ const Navbar = () => {
                 </button>
               </div>
             )}
-
             <p className="text-sm italic font-bold">{profile.name}</p>
           </>
           ) : (
