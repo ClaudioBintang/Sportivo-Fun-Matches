@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
     const {getProfile, profile, error} = useMe();
@@ -19,6 +20,7 @@ const Navbar = () => {
         navigate("/login")
       })
     }
+    
     return (
 <>
 <nav className="sticky top-0 z-20 w-screen bg-white shadow-sm">
@@ -63,16 +65,36 @@ const Navbar = () => {
           <div className="hidden sm:flex sm:items-center sm:space-x-4">
           {token ? (
             <>
-            <button>
-              <Link to="/profile"><img src={avatar} alt="Profile" className="w-8 h-8"/></Link>
-              </button>
-              <p className="text-sm italic font-bold">{profile.name}</p>
-            <button
-              onClick={handleLogout}
-              className="px-6 py-2 font-medium text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
-              Logout
+            <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                <img
+                    src={avatar}
+                    alt="Profile"
+                    className="w-8 h-8 cursor-pointer"
+                />
             </button>
-              </>
+            {isDropdownOpen && (
+                <div className="relative right-0 w-48 mt-2 bg-white border border-gray-200 rounded-md shadow-lg">
+                    <div className="py-1">
+                        <Link
+                            to="/profile"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            Profile
+                        </Link>
+                        <Link
+                            to="/mytransaction"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            Transactions
+                        </Link>
+                        <button
+                            onClick={handleLogout}
+                            className="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            )}
+            <p className="text-sm italic font-bold">{profile.name}</p>
+        </>
           ) : (
             <>
               <Link
@@ -155,6 +177,11 @@ const Navbar = () => {
                 <button className="w-full px-4 py-2 mb-1 text-white transition-colors bg-red-600 rounded-md hover:bg-red-700">
                   <Link to="/profile">
                   Go to Profile
+                  </Link>
+                </button>
+                <button className="w-full px-4 py-2 mb-1 text-white transition-colors bg-red-600 rounded-md hover:bg-red-700">
+                  <Link to="/mytransaction">
+                  My Transaction
                   </Link>
                 </button>
                 </>

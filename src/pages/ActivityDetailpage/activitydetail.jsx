@@ -81,7 +81,7 @@ const ActivityDetailpage = () => {
               <MapPin className="w-6 h-6" />
               <div>
                 <h3 className="font-bold">Location</h3>
-                <a href={activity.map_url} target="_blank" className="text-gray-600">Click here</a>
+                <a href={activity.map_url} className="text-gray-600">Click here to see  location</a>
               </div>
             </div>
           </div>

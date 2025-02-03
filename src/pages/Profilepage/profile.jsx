@@ -11,6 +11,7 @@ const Profilepage = () => {
     return (
     <>
     <Navbar/>
+      <div className="h-16 bg-[#B71C1C] w-full"></div>
         <div className="justify-center text-lg font-semibold text-center bg-white border rounded-lg">
             {error ? (
                 <p style={{ color: "red" }}>{error}</p>
@@ -24,7 +25,6 @@ const Profilepage = () => {
                 )}
         </div>
     <div className="min-h-screen bg-white">
-      <div className="h-16 bg-[#B71C1C] w-full"></div>
       <div className="container px-4 py-8 mx-auto">
         <div className="max-w-3xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
           <div className="flex">
@@ -50,7 +50,7 @@ const Profilepage = () => {
                     <div>
                       <label className="block mb-1 text-sm font-medium text-gray-700">Nama Lengkap *</label>
                       <input
-                        type={profile.name}
+                        type={profile?.name}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md"
                         placeholder="Nama Lengkap"
                       />

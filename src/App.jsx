@@ -8,6 +8,7 @@ import ActivityDetailpage from './pages/ActivityDetailpage/activitydetail'
 import Activitypage from './pages/Activitypage/activity'
 import Paymentpage from './pages/Paymentpage/payment'
 import Invoicepage from './pages/Invoicepage/invoice'
+import MyTransactionPage from './pages/MyTransactionPage/myTransaction'
 import './index.css'
 
 function App() {
@@ -19,9 +20,10 @@ function App() {
         <Route path='/' element={<Homepage/>}/>
         <Route path='/register' element={<Registpage/>}/>
         <Route path='/login' element={<Loginpage/>}/>
-        <Route path='/profile' element={<Profilepage/>}/>
         <Route path='/activity' element={<Activitypage/>}/>
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
+        <Route path='/profile' element={<Profilepage/>}/>
+        <Route path='/mytransaction' element={<MyTransactionPage/>}/>
         <Route path='/activity/:id' element={<ActivityDetailpage/>}/>
         <Route path='/payment/:id' element={<Paymentpage/>}/>
         <Route path='/invoice/:id' element={<Invoicepage/>}/>
