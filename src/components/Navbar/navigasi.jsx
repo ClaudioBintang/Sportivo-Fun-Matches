@@ -20,7 +20,18 @@ const Navbar = () => {
         navigate("/login")
       })
     }
-    
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+          setIsDropdownOpen(false);
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
     return (
 <>
 <nav className="sticky top-0 z-20 w-screen bg-white shadow-sm">
@@ -62,39 +73,47 @@ const Navbar = () => {
           </div>
 
           {/* Authentication Buttons */}
-          <div className="hidden sm:flex sm:items-center sm:space-x-4">
+          <div className="relative flex items-center space-x-4">
           {token ? (
             <>
-            <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                <img
-                    src={avatar}
-                    alt="Profile"
-                    className="w-8 h-8 cursor-pointer"
-                />
+            {/* Avatar Button */}
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="relative flex items-center"
+            >
+              <img
+                src={avatar}
+                alt="Profile"
+                className="w-10 h-10 border-2 border-red-500 rounded-full cursor-pointer"
+              />
             </button>
+
+            {/* Dropdown Menu */}
             {isDropdownOpen && (
-                <div className="relative right-0 w-48 mt-2 bg-white border border-gray-200 rounded-md shadow-lg">
-                    <div className="py-1">
-                        <Link
-                            to="/profile"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            Profile
-                        </Link>
-                        <Link
-                            to="/mytransaction"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            Transactions
-                        </Link>
-                        <button
-                            onClick={handleLogout}
-                            className="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100">
-                            Logout
-                        </button>
-                    </div>
-                </div>
+              <div className="absolute mt-40 overflow-hidden text-white bg-red-600 border border-red-700 rounded-md shadow-lg">
+                <Link
+                  to="/profile"
+                  className="block px-4 py-2 text-sm transition duration-200 hover:bg-red-700"
+                >
+                  Profile
+                </Link>
+                <Link
+                  to="/mytransaction"
+                  className="block px-4 py-2 text-sm transition duration-200 hover:bg-red-700"
+                >
+                  Transactions
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="block w-full px-4 py-2 text-sm text-left transition duration-200 hover:bg-red-700"
+                >
+                  Logout
+                </button>
+              </div>
             )}
+
             <p className="text-sm italic font-bold">{profile.name}</p>
-        </>
+          </>
           ) : (
             <>
               <Link
