@@ -1,39 +1,52 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import axios from "axios";
 
-const useTransaction = () => {
+const API_URL = "https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/transaction/create";
+
+export const useTransaction = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [transaction, setTransaction] = useState(null); // Simpan data transaksi yang berhasil dibuat
 
-  const createTransaction = async (paymentId, activityId) => {
+  const createTransaction = useCallback(async (paymentMethodId, activityId) => {
     setLoading(true);
     setError(null);
-    setSuccess(null);
+    setSuccess(false);
+    setTransaction(null); // Reset state sebelum transaksi baru
 
     try {
       const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Authentication token not found");
+      }
+
       const response = await axios.post(
-        "https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/transaction/create",
-        { payment_id: paymentId, activity_id: activityId },
+        API_URL,
+        {
+          sport_activity_id: activityId,
+          payment_method_id: paymentMethodId,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            accept: "application/json",
-            "Content-Type": "application/json",
+            Accept: "application/json",
           },
         }
       );
 
-      setSuccess(response.data);
+      setTransaction(response.data.data); // Simpan data transaksi ke state
+      setSuccess(true);
     } catch (err) {
-      setError(err.response?.data?.message || "Transaction failed");
+      if (axios.isAxiosError(err)) {
+        setError({ message: err.response?.data?.message || "Transaction failed" });
+      } else {
+        setError({ message: "An unexpected error occurred" });
+      }
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  return { createTransaction, loading, error, success };
+  return { createTransaction, loading, error, success, transaction };
 };
-
-export default useTransaction;

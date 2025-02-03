@@ -14,7 +14,7 @@ const ActivityDetailpage = () => {
 
   return (
     <>
-      <Navbar />
+    <Navbar />
       <main className="container px-4 py-8 mx-auto">
         <div className="max-w-5xl mx-auto">
           {/* Team Info Section */}
@@ -81,28 +81,13 @@ const ActivityDetailpage = () => {
               <MapPin className="w-6 h-6" />
               <div>
                 <h3 className="font-bold">Location</h3>
-                <p className="text-gray-600">View on map</p>
+                <a href={activity.map_url} target="_blank" className="text-gray-600">Click here</a>
               </div>
             </div>
           </div>
-
-          {/* Map Section */}
-          <div className="mt-8 mb-8">
-            <div className="aspect-[16/9] bg-gray-100 rounded-lg overflow-hidden">
-                <iframe
-                  src={activity.map_url}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                ></iframe>
-            </div>
-          </div>
-
         </div>
       </main>
-      <Footer />
+    <Footer />
     </>
   );
 };

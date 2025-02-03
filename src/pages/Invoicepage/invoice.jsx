@@ -1,48 +1,68 @@
-import Footer from "../../components/Footer/footer"
-import Navbar from "../../components/Navbar/navigasi"
-import { useLocation } from "react-router-dom"
-const Invoicepage = () => {
-    const location = useLocation();
-    const { transaction } = location.state || {};
-    if (!transaction) {
-    return <div className="mt-10 text-center text-red-500">No transaction data available.</div>;
-    }
-    return (
-    <>
-    <Navbar/>
-    <div>
-    <h1>invoice</h1>
-    <main className="container flex-1 px-4 py-8 mx-auto">
-        <h1 className="mb-6 text-2xl font-bold">Transaction Detail</h1>
+import { useLocation, useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer/footer";
+import Navbar from "../../components/Navbar/navigasi";
+import { useEffect } from "react";
 
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b">
-                <th className="px-4 py-4 text-left">Invoice id</th>
-                <th className="px-4 py-4 text-left">Status</th>
-                <th className="px-4 py-4 text-left">Payment Method</th>
-                <th className="px-4 py-4 text-left">Amount</th>
-                <th className="px-4 py-4 text-left">Order Date</th>
-                <th className="px-4 py-4 text-left">Expired Date</th>
+const InvoicePage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { transaction } = location.state || {};
+
+  useEffect(() => {
+    if (!transaction) {
+      navigate("/", { replace: true });
+    }
+  }, [transaction, navigate]);
+
+  if (!transaction) {
+    return <div className="mt-10 text-center text-red-500">No transaction data available.</div>;
+  }
+
+  return (
+    <>
+      <Navbar />
+      <main className="container flex-1 px-4 py-8 mx-auto">
+        <h1 className="mb-6 text-2xl font-bold">Invoice</h1>
+        <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+          <table className="w-full border-collapse table-auto">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 py-2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                  Invoice ID
+                </th>
+                <th className="px-4 py-2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                  Status
+                </th>
+                <th className="px-4 py-2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                  Payment Method
+                </th>
+                <th className="px-4 py-2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                  Amount
+                </th>
+                <th className="px-4 py-2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                  Order Date
+                </th>
+                <th className="px-4 py-2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                  Expired Date
+                </th>
               </tr>
             </thead>
-            <tbody>
-              <tr className="border-b hover:bg-gray-50">
-                <td className="px-4 py-4">{transaction.invoice_id}</td>
-                <td className="px-4 py-4">{transaction.status}</td>
-                <td className="px-4 py-4">{transaction.payment_method}</td>
-                <td className="px-4 py-4">Rp. {transaction.total_amount.toLocaleString()}</td>
-                <td className="px-4 py-4">{transaction.order_date}</td>
-                <td className="px-4 py-4">{transaction.expired_date}</td>
+            <tbody className="bg-white divide-y divide-gray-200">
+              <tr>
+                <td className="px-4 py-4 whitespace-nowrap">{transaction.invoice_id}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{transaction.status}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{transaction.payment_method}</td>
+                <td className="px-4 py-4 whitespace-nowrap">Rp. {transaction.total_amount.toLocaleString()}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{transaction.order_date}</td>
+                <td className="px-4 py-4 whitespace-nowrap">{transaction.expired_date}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </main>
-    </div>
-    <Footer/>
+      <Footer />
     </>
-    )
-}
-export default Invoicepage
+  );
+};
+
+export default InvoicePage;

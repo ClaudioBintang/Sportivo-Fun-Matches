@@ -97,8 +97,7 @@ const Homepage = () => {
             <div className="space-y-4">
               <h2 className="text-3xl font-bold">SPORTIVO</h2>
               <h3 className="text-xl font-semibold">Let's find your partner match and Play Together!</h3>
-              <p>Puluhan ribu teman baru sudah menantimu di lapangan,
-              yuk download Aplikasi SPORTIVO sekarang juga!</p>
+              <p>Tens of thousands of new friends are waiting for you on the field, let's download the SPORTIVO App now!</p>
               <button className="inline-block pr-1">
                 <img src={gplay} alt="play store" className="h-[42px] hover:opacity-90" />
               </button>
