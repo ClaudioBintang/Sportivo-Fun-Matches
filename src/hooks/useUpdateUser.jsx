@@ -1,18 +1,21 @@
-import { useState } from "react"
+import { useState } from "react";
 
-export const getUpdateUser = async () => {
-    // const [activeTab, setActiveTab] = useState("profile")
-    // const [showOldPassword, setShowOldPassword] = useState(false)
-    // const [showNewPassword, setShowNewPassword] = useState(false)
-    // const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [data, setData] = useState([])
+export const useUpdateUser = () => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
     const updateUser = async (userId, data) => {
-        setLoading(true)
+        setLoading(true);
         try {
-            const response = await axios.post(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/users/${userId}`, data)
+            const token = localStorage.getItem("token");
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            await axios.put(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/users/${userId}`, data, config);
+            setLoading(false);
         } catch (error) {
-            console.log(error)
-            
+            setLoading(false);
+            setError(error.response ? `Error: ${error.response.statusText}` : "Error: gagal memperbarui profile");
         }
-}}
+    };
+
+    return { updateUser, loading, error };
+};

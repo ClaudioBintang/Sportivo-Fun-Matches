@@ -1,8 +1,6 @@
 import { useState, useCallback } from "react";
 import axios from "axios";
 
-const API_URL = "https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/transaction/create";
-
 export const useTransaction = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,8 +19,7 @@ export const useTransaction = () => {
         throw new Error("Authentication token not found");
       }
 
-      const response = await axios.post(
-        API_URL,
+      const response = await axios.post("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/transaction/create",
         {
           sport_activity_id: activityId,
           payment_method_id: paymentMethodId,

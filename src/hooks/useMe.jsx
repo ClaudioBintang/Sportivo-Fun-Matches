@@ -1,4 +1,3 @@
-// import { getMe } from "../api/me";
 import { useState } from "react";
 import axios from "axios";
 export const useMe = () => {
