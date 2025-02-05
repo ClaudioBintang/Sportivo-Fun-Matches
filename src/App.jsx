@@ -9,6 +9,7 @@ import Activitypage from './pages/Activitypage/activity'
 import Paymentpage from './pages/Paymentpage/payment'
 import Invoicepage from './pages/Invoicepage/invoice'
 import MyTransactionPage from './pages/MyTransactionPage/myTransaction'
+import Dashboardpage from './pages/Dashboardpage/dashboard'
 import './index.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/register' element={<Registpage/>}/>
         <Route path='/login' element={<Loginpage/>}/>
         <Route path='/activity' element={<Activitypage/>}/>
+        <Route path='/dashboard' element={<Dashboardpage/>}/>
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
         <Route path='/profile' element={<Profilepage/>}/>
         <Route path='/mytransaction' element={<MyTransactionPage/>}/>

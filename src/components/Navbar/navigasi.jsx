@@ -87,7 +87,6 @@ const Navbar = () => {
                 className="w-10 h-10 border-2 border-red-500 rounded-full cursor-pointer"
               />
             </button>
-
             {/* Dropdown Menu */}
             {isDropdownOpen && (
               <div className="absolute mt-40 overflow-hidden text-white bg-red-600 border border-red-700 rounded-md shadow-lg">

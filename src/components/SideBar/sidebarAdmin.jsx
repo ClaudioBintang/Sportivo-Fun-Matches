@@ -1,41 +1,46 @@
-import { Home, Activity, Tag, Users } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import { Clock, LayoutDashboard, PlaySquare, Table } from "lucide-react"
+
+const items = [
+  {
+    title: "Dashboard",
+    icon: LayoutDashboard,
+    href: "/dashboard",
+  },
+  {
+    title: "Assignments",
+    icon: Table,
+    href: "/assignments",
+    isActive: true,
+  },
+  {
+    title: "Schedule",
+    icon: Clock,
+    href: "/schedule",
+  },
+  {
+    title: "Recordings",
+    icon: PlaySquare,
+    href: "/recordings",
+  },
+]
+
 const SideBar = () => {
-    return (
-    <>
-      <div className="absolute inset-y-0 left-0 w-64 px-2 space-y-6 text-white transition duration-200 ease-in-out transform -translate-x-full bg-gray-800 py-7 md:relative md:translate-x-0">
-      <nav>
+  return (
+    <nav className="space-y-1">
+      {items.map((item) => (
         <Link
-          href="/dashboard"
-          className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
+          key={item.title}
+          href={item.href}
+          className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent ${
+            item.isActive ? "bg-red-700 text-white" : "text-muted-foreground hover:text-foreground"
+          }`}
         >
-          <Home className="inline-block mr-2" size={20} />
-          Dashboard
+          <item.icon className="h-4 w-4" />
+          {item.title}
         </Link>
-        <Link
-          href="/dashboard/sport-categories"
-          className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
-        >
-          <Tag className="inline-block mr-2" size={20} />
-          Sport Categories
-        </Link>
-        <Link
-          href="/dashboard/sport-activities"
-          className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
-        >
-          <Activity className="inline-block mr-2" size={20} />
-          Sport Activities
-        </Link>
-        <Link
-          href="/dashboard/user-transactions"
-          className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
-        >
-          <Users className="inline-block mr-2" size={20} />
-          User Transactions
-        </Link>
-      </nav>
-    </div>
-    </>
-    )
+      ))}
+    </nav>
+  )
 }
 export default SideBar

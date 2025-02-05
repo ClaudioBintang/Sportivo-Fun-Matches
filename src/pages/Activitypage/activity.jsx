@@ -26,14 +26,16 @@ const ActivityPage = () => {
         {activity.map((item) => (
           <div
             key={item.id}
-            className="overflow-hidden transition bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg"
+            className="overflow-hidden transition bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg border-2"
             onClick={() => navigate(`/activity/${item.id}`)}>
             <img src={item.image} alt={item.title} className="object-cover w-full h-48" />
-            <div className="p-4">
+            <div className="p-1 flex justify-between">
               <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="text-gray-600">{item.category}</p>
-              <p className="text-gray-600">{item.location}</p>
               <p className="text-gray-600">Rp {item.price.toLocaleString()}</p>
+            </div>
+            <div className="p-1 flex justify-between">
+              <p className="text-gray-600">{item.address}</p>
+              <p className="text-gray-600">{item.activity_date}</p>
             </div>
           </div>
         ))}

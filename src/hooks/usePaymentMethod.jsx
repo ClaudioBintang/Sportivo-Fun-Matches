@@ -11,7 +11,6 @@ export const usePaymentMethod = () => {
             setPayment(response.data.result);
         } catch (error) {
             console.log(error);
-            
         }
     }
     return {getPayment, payment}
