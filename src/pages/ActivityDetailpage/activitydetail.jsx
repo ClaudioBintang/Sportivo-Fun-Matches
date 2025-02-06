@@ -8,7 +8,7 @@ import { useActivityDetail } from "../../hooks/useActivityDetail";
 // import sport from "../../assets/sport indonesia.png";
 const ActivityDetailpage = () => {
   const { activity, loading, error } = useActivityDetail();
-
+  
   if (loading) return <p className="text-lg text-center">Loading...</p>;
   if (error) return <p className="text-center text-red-500">Error: {error.message}</p>;
   if (!activity) return <p className="text-center text-gray-500">Data not found.</p>;

@@ -1,28 +1,25 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 const useSportsAndLocations = () => {
-  const [provinces, setProvinces] = useState([]); // Data lokasi
-  const [categories, setCategories] = useState([]); // Data kategori olahraga
-  const [selectedLocation, setSelectedLocation] = useState(null); // Lokasi yang dipilih
-  const [selectedCategory, setSelectedCategory] = useState(""); // Kategori yang dipilih
-  const [filteredActivities, setFilteredActivities] = useState([]); // Hasil filter aktivitas
-  const [searchQuery, setSearchQuery] = useState(""); // Pencarian lokasi
-  const [searchCategory, setSearchCategory] = useState(""); // Pencarian kategori
-  const navigate = useNavigate();
-  // **Filter kota berdasarkan input pencarian**
+  const [provinces, setProvinces] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [filteredActivities, setFilteredActivities] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchCategory, setSearchCategory] = useState("");
+  
   const filteredCities = provinces
     .flatMap((province) => province.cities)
     .filter((city) =>
       city.city_name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-  // **Filter kategori berdasarkan input pencarian**
   const filteredCategories = categories.filter((category) =>
     category.name.toLowerCase().includes(searchCategory.toLowerCase())
   );
 
-  // **Ambil data provinsi dan kota**
   useEffect(() => {
     const fetchProvincesAndCities = async () => {
       let allProvinces = [];
@@ -62,7 +59,7 @@ const useSportsAndLocations = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories");
+        const response = await axios.get(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories`);
         console.log(response.data);
         setCategories(response.data.result.data || []);
       } catch (error) {
@@ -73,7 +70,6 @@ const useSportsAndLocations = () => {
     fetchCategories();
   }, []);
 
-  // Filter aktivitas berdasarkan lokasi dan kategori
   const filterActivities = async () => {
     try {
       const params = {
@@ -82,16 +78,13 @@ const useSportsAndLocations = () => {
         page: 1,
       };
 
-      // Jika lokasi dipilih, tambahkan city_id
       if (selectedLocation) {
         params.city_id = selectedLocation.city_id;
       }
 
-      // Jika kategori olahraga dipilih, tambahkan sport_category_id
       if (selectedCategory) {
         params.sport_category_id = parseInt(selectedCategory, 10);
       }
-      console.log("test apakah dapet catgory", selectedCategory); //test debugging
       
       const response = await axios.get(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-activities`, { params });
       setFilteredActivities([...response.data.result]);
