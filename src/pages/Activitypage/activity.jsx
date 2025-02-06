@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useActivity } from "../../hooks/useActivity";
+import { useEffect } from "react";
+import useSportsAndLocations from "../../hooks/useFilter";
 import Navbar from "../../components/Navbar/navigasi";
 import Footer from "../../components/Footer/footer";
 import football from "../../assets/drawing football.png";
@@ -9,12 +10,29 @@ import app from "../../assets/app-dark.png";
 import timnas from "../../assets/Timnas indo.jpg";
 
 const ActivityPage = () => {
-  const { activity, loading, error } = useActivity();
-  const navigate = useNavigate();
   
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  const {
+    provinces,
+    categories,
+    selectedLocation,
+    selectedCategory,
+    filteredActivities,
+    setSelectedCategory,
+    setSelectedLocation,
+    filterActivities,
+    handleSearch,
+    filteredCities,
+    searchQuery,
+    setSearchQuery,
+    searchCategory,
+    setSearchCategory,
+    filteredCategories,
+  } = useSportsAndLocations();
 
+  const navigate = useNavigate();
+  useEffect(() => {
+      filterActivities();
+    }, [selectedLocation, selectedCategory]);
   return (
     <>
     <Navbar />
@@ -23,25 +41,32 @@ const ActivityPage = () => {
           <div className="absolute inset-0 bg-[url('/wave-bg.svg')] bg-cover bg-center opacity-10" />
           <h1 className="relative z-10 text-4xl font-bold md:text-5xl">CARI LAWAN SPARRING</h1>
         </div>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {activity.map((item) => (
-          <div
-            key={item.id}
-            className="overflow-hidden transition bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg border-2"
-            onClick={() => navigate(`/activity/${item.id}`)}>
-            <img src={timnas} alt={item.title} className="object-cover w-full h-48" />
-            <div className="p-1 flex justify-between">
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="text-gray-600">Rp {item.price.toLocaleString()}</p>
+        {filteredActivities.length > 0 ? (
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {filteredActivities.map((item) => (
+            <div
+              key={item.id}
+              className="overflow-hidden transition bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg border-2"
+              onClick={() => navigate(`/activity/${item.id}`)}>
+              <img src={timnas} alt={item.title} className="object-cover w-full h-48" />
+              <div className="p-1 flex justify-between">
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="text-gray-600">Rp {item.price.toLocaleString()}</p>
+              </div>
+              <div className="p-1 flex justify-between">
+                <p className="text-gray-600">{item.address}</p>
+                <p className="text-gray-600">{item.activity_date}</p>
+              </div>
             </div>
-            <div className="p-1 flex justify-between">
-              <p className="text-gray-600">{item.address}</p>
-              <p className="text-gray-600">{item.activity_date}</p>
-            </div>
+          ))}
           </div>
-        ))}
-      </div>
+        ) : (
+          <>
+          <p>Data not found</p>
+          </>
+        )}
     </div>
+
     {/* Promotion Card */}
           <section className="bg-[#c23636] text-white py-16 mt-6">
             <div className="container px-4 mx-screen">

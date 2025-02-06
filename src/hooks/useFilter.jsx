@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-const useFilters = () => {
+const useSportsAndLocations = () => {
   const [provinces, setProvinces] = useState([]); // Data lokasi
   const [categories, setCategories] = useState([]); // Data kategori olahraga
   const [selectedLocation, setSelectedLocation] = useState(null); // Lokasi yang dipilih
@@ -10,7 +9,7 @@ const useFilters = () => {
   const [filteredActivities, setFilteredActivities] = useState([]); // Hasil filter aktivitas
   const [searchQuery, setSearchQuery] = useState(""); // Pencarian lokasi
   const [searchCategory, setSearchCategory] = useState(""); // Pencarian kategori
-
+  const navigate = useNavigate();
   // **Filter kota berdasarkan input pencarian**
   const filteredCities = provinces
     .flatMap((province) => province.cities)
@@ -59,11 +58,12 @@ const useFilters = () => {
     fetchProvincesAndCities();
   }, []);
 
-  // **Ambil data kategori olahraga**
+  // Ambil data kategori olahraga
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories");
+        console.log(response.data);
         setCategories(response.data.result.data || []);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -73,7 +73,7 @@ const useFilters = () => {
     fetchCategories();
   }, []);
 
-  // **Filter aktivitas berdasarkan lokasi dan kategori**
+  // Filter aktivitas berdasarkan lokasi dan kategori
   const filterActivities = async () => {
     try {
       const params = {
@@ -89,25 +89,24 @@ const useFilters = () => {
 
       // Jika kategori olahraga dipilih, tambahkan sport_category_id
       if (selectedCategory) {
-        params.sport_category_id = selectedCategory;
+        params.sport_category_id = parseInt(selectedCategory, 10);
       }
-
+      console.log("test apakah dapet catgory", selectedCategory); //test debugging
+      
       const response = await axios.get(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-activities`, { params });
-      setFilteredActivities(response.data.result || []);
+      setFilteredActivities([...response.data.result]);
     } catch (error) {
       console.error("Error filtering activities:", error);
       setFilteredActivities([]);
     }
   };
 
-  const handleSearch = () => {
-    const navigate = useNavigate();
-    const query = new URLSearchParams({
-      sport_category_id: selectedCategory || "",
+  const handleSearch = (navigate) => {
+    const id = new URLSearchParams({
+      sport_category_id: selectedCategory ? parseInt(selectedCategory, 10) : "",
       city_id: selectedLocation ? selectedLocation.city_id : "",
     }).toString();
-
-    navigate(`/explore?${query}`);
+    navigate(`/activity?${id}`);
   };
 
   return {
@@ -129,4 +128,4 @@ const useFilters = () => {
   };
 };
 
-export default useFilters;
+export default useSportsAndLocations;

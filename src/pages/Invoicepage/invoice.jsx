@@ -70,12 +70,14 @@ const InvoicePage = () => {
             </tbody>
           </table>
         </div>
-        <Link to="/">
-        <button>back to home</button>
+        <div className="justify-center flex gap-10 mt-10">
+        <Link to="/" className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
+        Back to Homepage
         </Link>
-        <Link to="/mytransaction">
-        <button>go to My Transaction</button>
+        <Link to="/mytransaction" className="px-6 py-2 text-white transition-colors bg-red-600 border border-red-600 rounded-md hover:bg-white hover:text-red-600">
+        Go to history transaction
         </Link>
+        </div>
       </main>
       <Footer />
     </>

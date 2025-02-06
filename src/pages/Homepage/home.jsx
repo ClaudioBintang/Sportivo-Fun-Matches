@@ -105,10 +105,10 @@ const Homepage = () => {
               <h3 className="text-xl font-semibold">Let's find your partner match and Play Together!</h3>
               <p>Tens of thousands of new friends are waiting for you on the field, let's download the SPORTIVO App now!</p>
               <button className="inline-block pr-1">
-                <img src={gplay} alt="play store" className="h-[42px] hover:opacity-90" />
+                <img src={gplay} alt="play store" className="h-[42px] hover:opacity-90 bg-transparent" />
               </button>
               <button className="inline-block pr-1">
-                <img src={app} alt="app store" className="h-[42px] hover:opacity-90" />
+                <img src={app} alt="app store" className="h-[42px] hover:opacity-90 bg-transparent" />
               </button>
             </div>
           </div>

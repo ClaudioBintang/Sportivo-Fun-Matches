@@ -49,9 +49,6 @@ const TransactionPage = () => {
   };
 
   useEffect(() => {
-    console.log("succes", success);
-    console.log("Trnsactionnya", transaction);
-    
     if (success && transaction && transaction.id) {
       localStorage.setItem("transaction", JSON.stringify(transaction));
       navigate(`/invoice/${transaction.id}`, { state: { transaction } }, { replace: true});

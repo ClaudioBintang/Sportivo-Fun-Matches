@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Calendar, Trophy } from "lucide-react";
+import { MapPin, Calendar, Trophy, UserPen, UserPlus } from "lucide-react";
 import Navbar from "../../components/Navbar/navigasi";
 import Footer from "../../components/Footer/footer";
+import photoIcon from "../../assets/sport indonesia.jpg";
 import { useActivityDetail } from "../../hooks/useActivityDetail";
 // import sport from "../../assets/sport indonesia.png";
 const ActivityDetailpage = () => {
@@ -23,7 +24,7 @@ const ActivityDetailpage = () => {
             <div className="w-full md:w-1/3">
               <div className="overflow-hidden bg-gray-100 rounded-lg aspect-square">
                 <img
-                  src={activity.image}
+                  src={photoIcon}
                   alt={activity.title}
                   className="object-cover w-full h-full"
                 />
@@ -82,6 +83,20 @@ const ActivityDetailpage = () => {
               <div>
                 <h3 className="font-bold">Location</h3>
                 <a href={activity.map_url} className="text-gray-600">Click here to see  location</a>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <UserPen className="w-6 h-6" />
+              <div>
+                <h3 className="font-bold">Organized by:</h3>
+                <a className="text-gray-600">{activity.organizer.name}</a>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <UserPlus className="w-6 h-6" />
+              <div>
+                <h3 className="font-bold">Slot People:</h3>
+                <a className="text-gray-600">{activity.slot}</a>
               </div>
             </div>
           </div>
