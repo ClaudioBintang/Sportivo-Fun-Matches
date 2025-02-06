@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
 export const useActivityDetail = () => {
   const { id } = useParams();
@@ -25,6 +25,7 @@ export const useActivityDetail = () => {
         console.log(response.data.result);
         setActivity(response.data.result);
       } catch (error) {
+        console.log(error);
         setError(error);
       } finally {
         setLoading(false);

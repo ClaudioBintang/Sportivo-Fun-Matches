@@ -1,8 +1,9 @@
 import Footer from "../../components/Footer/footer";
 import Navbar from "../../components/Navbar/navigasi";
 import { useMyTransaction } from "../../hooks/useMeTransaction"; // Mengimpor hook
-
+import { useNavigate } from "react-router-dom";
 const MyTransactionPage = () => {
+  const navigate = useNavigate();
   const { transactions, loading, error } = useMyTransaction();
 
   return (
@@ -24,7 +25,7 @@ const MyTransactionPage = () => {
       ) : (
         <ul className="space-y-4">
           {transactions.map((transaction) => (
-            <li key={transaction.id} className="p-4 border rounded-lg shadow-sm">
+            <li key={transaction.id} onClick={() => navigate(`/transaction/${transaction.id}`)} className="p-4 border rounded-lg shadow-sm">
               <h2 className="text-lg font-semibold">Invoice: {transaction.invoice_id}</h2>
               <p><strong>Status:</strong> {transaction.status}</p>
               <p><strong>Total Price:</strong> {transaction.total_amount}</p>

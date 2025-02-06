@@ -5,20 +5,15 @@ export const useTransaction = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-  const [transaction, setTransaction] = useState(null); // Simpan data transaksi yang berhasil dibuat
+  const [transaction, setTransaction] = useState(null);
 
-  const createTransaction = useCallback(async (paymentMethodId, activityId) => {
+  const createTransaction = async (paymentMethodId, activityId) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
-    setTransaction(null); // Reset state sebelum transaksi baru
-
+    setTransaction(null);
     try {
       const token = localStorage.getItem("token");
-      if (!token) {
-        throw new Error("Authentication token not found");
-      }
-
       const response = await axios.post("https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/transaction/create",
         {
           sport_activity_id: activityId,
@@ -31,19 +26,22 @@ export const useTransaction = () => {
           },
         }
       );
+      console.log("Response dari API:", response.data?.message); // Debugging respons API
 
-      setTransaction(response.data.data); // Simpan data transaksi ke state
-      setSuccess(true);
+    if (!response.data || !response.data.result) {
+      throw new Error("Invalid response structure from API");
+    }
+    const transactionData = response.data.result; // Ambil data transaksi yang true
+    setTransaction(response.data.result);
+    setSuccess(true);
+    return transactionData; //memastikan return data transaksi
     } catch (err) {
-      if (axios.isAxiosError(err)) {
-        setError({ message: err.response?.data?.message || "Transaction failed" });
-      } else {
-        setError({ message: "An unexpected error occurred" });
-      }
+      console.log("error while create transaction", err);
+      setError({ message: err.response?.data?.message || "Transaction failed" })
+      return null
     } finally {
       setLoading(false);
     }
-  }, []);
-
+  }
   return { createTransaction, loading, error, success, transaction };
 };

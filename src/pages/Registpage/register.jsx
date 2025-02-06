@@ -89,7 +89,7 @@ const Registpage = () => {
             </div>
             <div className="space-y-2">
               <label htmlFor="role" className="text-sm font-medium">
-                What's your role?
+                What do you want to do?
               </label>
               <select 
                 name="role" 
@@ -99,8 +99,8 @@ const Registpage = () => {
                 value={credentials.role || "user"}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/50">
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
+                <option value="user">Looking for Opponent</option>
+                <option value="admin">Create Sparring Match</option>
                 </select>
             </div>
 

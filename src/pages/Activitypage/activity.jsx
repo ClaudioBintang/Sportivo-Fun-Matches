@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/footer";
 import football from "../../assets/drawing football.png";
 import gplay from "../../assets/google-dark.png";
 import app from "../../assets/app-dark.png";
+import timnas from "../../assets/Timnas indo.jpg";
 
 const ActivityPage = () => {
   const { activity, loading, error } = useActivity();
@@ -28,7 +29,7 @@ const ActivityPage = () => {
             key={item.id}
             className="overflow-hidden transition bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg border-2"
             onClick={() => navigate(`/activity/${item.id}`)}>
-            <img src={item.image} alt={item.title} className="object-cover w-full h-48" />
+            <img src={timnas} alt={item.title} className="object-cover w-full h-48" />
             <div className="p-1 flex justify-between">
               <h3 className="text-lg font-semibold">{item.title}</h3>
               <p className="text-gray-600">Rp {item.price.toLocaleString()}</p>

@@ -14,17 +14,17 @@ const Footer = () => {
             <h3 className="mb-4 font-bold">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="transition-colors hover:text-gray-600">
+              <Link to="/" className="transition-colors hover:text-gray-600">
                   Home
-                </Link>
+              </Link>
               </li>
               <li>
-                <Link href="/activity" className="transition-colors hover:text-gray-600">
+                <Link to="/activity" className="transition-colors hover:text-gray-600">
                   Sparring
                 </Link>
               </li>
               <li>
-                <Link href="#" className="transition-colors hover:text-gray-600">
+                <Link to="#" className="transition-colors hover:text-gray-600">
                   FAQs
                 </Link>
               </li>

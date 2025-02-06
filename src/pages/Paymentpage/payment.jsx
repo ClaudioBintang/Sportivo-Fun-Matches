@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, replace } from "react-router-dom";
 import Navbar from "../../components/Navbar/navigasi";
 import Footer from "../../components/Footer/footer";
 import { usePaymentMethod } from "../../hooks/usePaymentMethod";
@@ -27,7 +27,7 @@ const TransactionPage = () => {
 
   useEffect(() => {
     getPayment();
-  }, [getPayment]);
+  }, []);
 
   const handleTransaction = async () => {
     if (!selectedPaymentMethod) {
@@ -39,14 +39,22 @@ const TransactionPage = () => {
       return;
     }
     const result = await createTransaction(selectedPaymentMethod, activity.id);
+    console.log("hasil create transaction", result);
+    
     if (result) {
       setTransaction(result);
+    } else {
+      alert("transaction failed, try again")
     }
   };
 
   useEffect(() => {
-    if (success && transaction) {
-      navigate(`/invoice/${transaction.id}`, { state: { transaction } });
+    console.log("succes", success);
+    console.log("Trnsactionnya", transaction);
+    
+    if (success && transaction && transaction.id) {
+      localStorage.setItem("transaction", JSON.stringify(transaction));
+      navigate(`/invoice/${transaction.id}`, { state: { transaction } }, { replace: true});
     }
   }, [success, transaction, navigate]);
 

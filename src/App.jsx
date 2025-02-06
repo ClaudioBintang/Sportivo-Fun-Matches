@@ -9,6 +9,7 @@ import Activitypage from './pages/Activitypage/activity'
 import Paymentpage from './pages/Paymentpage/payment'
 import Invoicepage from './pages/Invoicepage/invoice'
 import MyTransactionPage from './pages/MyTransactionPage/myTransaction'
+import MyTransactionId from './pages/MyTransactionId/myTransacionId'
 import Dashboardpage from './pages/Dashboardpage/dashboard'
 import './index.css'
 
@@ -26,6 +27,7 @@ function App() {
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
         <Route path='/profile' element={<Profilepage/>}/>
         <Route path='/mytransaction' element={<MyTransactionPage/>}/>
+        <Route path='/mytransaction/:id' element={<MyTransactionId/>}/>
         <Route path='/activity/:id' element={<ActivityDetailpage/>}/>
         <Route path='/payment/:id' element={<Paymentpage/>}/>
         <Route path='/invoice/:id' element={<Invoicepage/>}/>
