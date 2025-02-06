@@ -58,7 +58,7 @@ const Filter = () => {
                   );
                   setSelectedLocation(selectedCity || null);
                 }}
-                className="absolute w-full mt-2 bg-transparent bottom-0 text-black">
+                className="absolute mt-2 bg-transparent w-5 bottom-0 text-white">
                 <option value=""></option>
                 {filteredCities.map((city) => (
                   <option key={city.city_id} value={city.city_id}>

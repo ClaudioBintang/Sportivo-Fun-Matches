@@ -4,9 +4,11 @@ import avatar from "../../assets/soccer-player.png"
 import { useMe } from "../../hooks/useMe"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useRef } from "react"
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
     const {getProfile, profile, error} = useMe();
@@ -74,22 +76,22 @@ const Navbar = () => {
 
           {/* Authentication Buttons */}
           <div className="relative flex items-center space-x-4">
+            
           {token ? (
             <>
-            {/* Avatar Button */}
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="relative flex items-center"
-            >
+              className="relative flex items-center">
               <img
                 src={avatar}
                 alt="Profile"
                 className="w-10 h-10 border-2 border-red-500 rounded-full cursor-pointer"
               />
+              <p className="text-sm italic font-bold px-2">{profile.name}</p>
             </button>
             {/* Dropdown Menu */}
             {isDropdownOpen && (
-              <div className="absolute mt-40 overflow-hidden text-white bg-red-600 border border-red-700 rounded-md shadow-lg">
+              <div ref={dropdownRef} className="absolute mt-40 overflow-hidden text-white bg-red-600 border border-red-700 rounded-md shadow-lg">
                 <Link
                   to="/profile"
                   className="block px-4 py-2 text-sm transition duration-200 hover:bg-red-700"
@@ -110,7 +112,6 @@ const Navbar = () => {
                 </button>
               </div>
             )}
-            <p className="text-sm italic font-bold">{profile.name}</p>
           </>
           ) : (
             <>
