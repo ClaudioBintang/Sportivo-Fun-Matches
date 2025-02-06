@@ -60,7 +60,7 @@ const useSportsAndLocations = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories`);
-        console.log(response.data);
+        console.log(response.data.result.data);
         setCategories(response.data.result.data || []);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -85,9 +85,18 @@ const useSportsAndLocations = () => {
       if (selectedCategory) {
         params.sport_category_id = parseInt(selectedCategory, 10);
       }
-      
-      const response = await axios.get(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-activities`, { params });
-      setFilteredActivities([...response.data.result]);
+      const token = localStorage.getItem("token")
+      const response = await axios.get(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-activities`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          params,
+        },
+        );
+      setFilteredActivities(response.data.result);
     } catch (error) {
       console.error("Error filtering activities:", error);
       setFilteredActivities([]);
