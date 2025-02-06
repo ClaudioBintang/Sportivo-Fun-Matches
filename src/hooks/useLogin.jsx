@@ -15,8 +15,8 @@ export const useLogin = () => {
             const {name, value} = event.target;
             setCredentials((prev) => ({...prev, [name]: value}))
     }
-    const usedLogin = async (event) => {
-        event.preventDefault();
+    const usedLogin = async (e) => {
+        e.preventDefault();
         setLoading(true);
         try {
             const response = await axios.post('https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/login', credentials);

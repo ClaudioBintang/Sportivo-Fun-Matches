@@ -35,7 +35,7 @@ const Loginpage = () => {
                 type="email"
                 name="email"
                 onChange={handleChange}
-                value={credentials.email}
+                value={credentials.email || ""}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/50"
               />
@@ -47,13 +47,14 @@ const Loginpage = () => {
                 type="password"
                 name="password"
                 onChange={handleChange}
-                value={credentials.password}
+                value={credentials.password || ""}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/50"
               />
             </div>
             <button
               type="submit"
+              disabled={loading}
               className="w-full px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500/50 focus:ring-offset-2">
               {loading ? "Loading..." : "Log In"}
             </button>

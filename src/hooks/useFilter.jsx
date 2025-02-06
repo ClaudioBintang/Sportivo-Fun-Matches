@@ -71,6 +71,7 @@ const useSportsAndLocations = () => {
   }, []);
 
   const filterActivities = async () => {
+    const token = localStorage.getItem("token")
     try {
       const params = {
         is_paginate: false,
@@ -85,7 +86,6 @@ const useSportsAndLocations = () => {
       if (selectedCategory) {
         params.sport_category_id = parseInt(selectedCategory, 10);
       }
-      const token = localStorage.getItem("token")
       const response = await axios.get(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-activities`,
         {
           headers: {
