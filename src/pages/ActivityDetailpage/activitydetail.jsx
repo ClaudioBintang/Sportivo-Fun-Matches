@@ -96,7 +96,7 @@ const ActivityDetailpage = () => {
               <UserPlus className="w-6 h-6" />
               <div>
                 <h3 className="font-bold">Slot People:</h3>
-                <a className="text-gray-600">{activity.slot}</a>
+                <a className="text-gray-600">{activity.slot} <strong className="font-semibold">people</strong></a>
               </div>
             </div>
           </div>

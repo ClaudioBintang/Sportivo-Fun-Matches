@@ -41,11 +41,6 @@ const TransactionPage = () => {
     const result = await createTransaction(selectedPaymentMethod, activity.id);
     console.log("hasil create transaction", result);
     
-    if (result) {
-      setTransaction(result);
-    } else {
-      alert("transaction failed, try again")
-    }
   };
 
   useEffect(() => {
