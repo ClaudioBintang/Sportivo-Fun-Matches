@@ -1,27 +1,29 @@
 import { Link } from "react-router-dom"
-import { Clock, LayoutDashboard, PlaySquare, Table } from "lucide-react"
+import { Clock, LayoutDashboard, PlaySquare, Table, Activity } from "lucide-react"
+import { Navigate } from "react-router-dom"
 
 const items = [
   {
     title: "Dashboard",
     icon: LayoutDashboard,
-    href: "/dashboard",
+    to: "/dashboard",
+    
   },
   {
-    title: "Assignments",
+    title: "Transactions",
     icon: Table,
-    href: "/assignments",
+    to: "/all-transactions",
     isActive: true,
   },
   {
-    title: "Schedule",
-    icon: Clock,
-    href: "/schedule",
+    title: "Activity",
+    icon: Activity,
+    to: "/activities",
   },
   {
     title: "Recordings",
     icon: PlaySquare,
-    href: "/recordings",
+    to: "/recordings",
   },
 ]
 
@@ -31,12 +33,12 @@ const SideBar = () => {
       {items.map((item) => (
         <Link
           key={item.title}
-          href={item.href}
+          to={item.to}
           className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent ${
             item.isActive ? "bg-red-700 text-white" : "text-muted-foreground hover:text-foreground"
           }`}
         >
-          <item.icon className="h-4 w-4" />
+          <item.icon className="w-4 h-4" />
           {item.title}
         </Link>
       ))}

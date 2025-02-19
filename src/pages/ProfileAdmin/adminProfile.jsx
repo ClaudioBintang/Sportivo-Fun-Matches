@@ -1,9 +1,8 @@
 import { useMe } from "../../hooks/useMe";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 import { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/navigasi";
-import Footer from "../../components/Footer/footer";
-const Profilepage = () => {
+import AdminNav from "../../components/AdminNav/profileadmin";
+const ProfileAdmin = () => {
   const { getProfile, profile, error } = useMe();
   const { updateUser, loading } = useUpdateUser();
   const [formData, setFormData] = useState({
@@ -37,22 +36,9 @@ const Profilepage = () => {
   }, []);
   return (
     <>
-      <Navbar />
-      <div className="h-16 bg-[#B71C1C] w-full"></div>
-      {/* <div className="justify-center text-lg font-semibold text-center bg-white border rounded-lg">
-            {error ? (
-                <p style={{ color: "red" }}>{error}</p>
-                ) : (
-                <>
-                    <p>Nama: {profile?.name || "Tidak tersedia"}</p>
-                    <p>Email: {profile?.email || "Tidak tersedia"}</p>
-                    <p>Bergabung pada: {profile?.created_at || "Tidak tersedia"}</p>
-                    <p>{profile.role}</p>
-                </>
-                )}
-
-        </div> */}
-      <div className="min-h-screen bg-white">
+    <AdminNav />
+    <div className="h-16 bg-[#B71C1C] w-full"></div>
+    <div className="min-h-screen bg-white">
         <div className="container px-4 py-8 mx-auto">
           <div className="max-w-3xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
             <div className="flex">
@@ -163,8 +149,7 @@ const Profilepage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
-  );
-};
-export default Profilepage;
+    );
+    }
+export default ProfileAdmin

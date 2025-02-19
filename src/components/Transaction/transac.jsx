@@ -1,10 +1,10 @@
-import { useMyTransaction } from "../../hooks/useMeTransaction";
+import { useAllTransaction } from "../../hooks/useAllTransaction";
 const Transaction = () => {
-    const { transactions, loading, error } = useMyTransaction();
+    const { transactions, loading, error } = useAllTransaction();
       
     return (
     <>
-    <div className="mt-6 border rounded-md overflow-x-auto">
+    <div className="mt-6 overflow-x-auto border rounded-md">
       <table className="w-full border-collapse">
         <thead>
           <tr className="bg-gray-100 border-b">
