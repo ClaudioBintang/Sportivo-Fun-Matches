@@ -3,7 +3,9 @@ import Footer from "../../components/Footer/footer";
 import Navbar from "../../components/Navbar/navigasi";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useUploadImage } from "../../hooks/useUploadImage";
 const InvoicePage = () => {
+  const {fetchingImage} = useUploadImage()
   const location = useLocation();
   const navigate = useNavigate();
   const transaction  = location.state?.transaction
@@ -65,7 +67,7 @@ const InvoicePage = () => {
                 <td className="px-4 py-4 whitespace-nowrap">Rp. {transaction.total_amount.toLocaleString()}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{transaction.order_date}</td>
                 <td className="px-4 py-4 whitespace-nowrap">{transaction.expired_date}</td>
-                <td className="px-4 py-4 whitespace-nowrap"><input type="file" /></td>
+                <td className="px-4 py-4 whitespace-nowrap"><input type="file" onChange={fetchingImage}/></td>
               </tr>
             </tbody>
           </table>

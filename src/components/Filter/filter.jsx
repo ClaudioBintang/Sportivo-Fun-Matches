@@ -102,7 +102,7 @@ const Filter = () => {
         {/* Search Button */}
         <button
           onClick={() => handleSearch(navigate)}
-          className="w-full md:w-auto px-6 py-2 bg-white rounded-lg text-[#B22222] font-medium flex items-center justify-center gap-2 hover:bg-white/90 transition-colors">
+          className="w-full md:w-auto px-6 py-2 bg-white rounded-lg text-[#B22222] font-medium flex items-center justify-center gap-2 hover:bg-white/90 transition-colors mr-5">
           Find out
         </button>
       </div>

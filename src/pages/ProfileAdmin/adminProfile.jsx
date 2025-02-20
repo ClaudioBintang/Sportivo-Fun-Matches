@@ -2,6 +2,7 @@ import { useMe } from "../../hooks/useMe";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 import { useEffect, useState } from "react";
 import AdminNav from "../../components/AdminNav/profileadmin";
+import SideBar from "../../components/SideBar/sidebarAdmin";
 const ProfileAdmin = () => {
   const { getProfile, profile, error } = useMe();
   const { updateUser, loading } = useUpdateUser();
@@ -36,16 +37,23 @@ const ProfileAdmin = () => {
   }, []);
   return (
     <>
-    <AdminNav />
-    <div className="h-16 bg-[#B71C1C] w-full"></div>
-    <div className="min-h-screen bg-white">
+    <div className="flex h-screen">
+    <div className="w-64 border-r bg-white">
+        <div className="flex h-16 items-center px-4">
+          <span className="font-bold">SPORTIVO</span>
+        </div>
+        <SideBar />
+        </div>
+        
+  
+    <div className="flex-1">
+    <header className="flex h-16 items-center justify-between border-b px-4">
+            <AdminNav />
+        </header>
+
         <div className="container px-4 py-8 mx-auto">
           <div className="max-w-3xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
-            <div className="flex">
-              <div className="w-1/3 border-r">
-                <div className="px-4 py-3 cursor-pointer">Data Diri</div>
-                <div className="px-4 py-3 cursor-pointer">Ubah Kata Sandi</div>
-              </div>
+            <div className="flex justify-center">
 
               <div className="w-2/3 p-6">
                 <div>
@@ -86,7 +94,7 @@ const ProfileAdmin = () => {
                           onChange={handleChange}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md"
                           placeholder="Email"
-                        />
+                          />
                       </div>
                       <button
                         disabled={loading}
@@ -121,7 +129,7 @@ const ProfileAdmin = () => {
                         type="button"
                         className="absolute inset-y-0 right-0 flex items-center pr-3 text-sm leading-5"
                         // onClick={() => setShowNewPassword(!showNewPassword)}
-                      >
+                        >
                         {/* {showNewPassword ? "Hide" : "Show"}  */}
                       </button>
                     </div>
@@ -149,6 +157,7 @@ const ProfileAdmin = () => {
           </div>
         </div>
       </div>
+    </div>
     </>
     );
     }

@@ -87,7 +87,7 @@ const Navbar = () => {
                 alt="Profile"
                 className="w-10 h-10 border-2 border-red-500 rounded-full cursor-pointer"
               />
-              <p className="text-sm italic font-bold px-2">{profile.name}</p>
+              {/* <p className="text-sm italic font-bold px-2">{profile.name}</p> */}
             </button>
             {/* Dropdown Menu */}
             {isDropdownOpen && (

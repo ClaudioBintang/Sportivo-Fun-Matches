@@ -69,14 +69,14 @@ const Homepage = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold" style={{ color: "#8A1010" }}>FIND A SPARRING OPPONENT</h4>
             <h2 className="text-3xl font-bold">Find a sparring partner opponent in just a tap of a finger</h2>
-            <p className="text-gray-600">Sportivo provides information and reservations for sports venues such as Badminton, Soccer, and others in various locations.
+            <p className="text-gray-600 text-xl">Sportivo provides information and reservations for sports venues such as Badminton, Soccer, and others in various locations.
             and also a place for the sports community to interact to each other, find friends to play with, and take part in various sports actvities <br />
             Now you don't have to bother looking for sparring partners. Easily make new friends and opponents every week only on the SPORTIVO App!
             </p>
           </div>
           <div className="space-y-4 mt-28">
             <h2 className="text-3xl font-bold">look for matches that are exciting and fun</h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-xl">
               Looking for exciting and fun matches is an integral part of the world of sports. Every sports fan wants a
               match that is thrilling and full of surprises. An exciting match not only presents spectacular actions on
               the field, but also is able to arouse the fighting spirit of the athletes. That way, the audience will

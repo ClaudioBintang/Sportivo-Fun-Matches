@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import axios from "axios";
 export const useUpdateUser = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ export const useUpdateUser = () => {
         try {
             const token = localStorage.getItem("token");
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            await axios.put(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/users/${userId}`, data, config);
+            await axios.put(`https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/update-user/${userId}`, data, config);
             setLoading(false);
         } catch (error) {
             setLoading(false);
