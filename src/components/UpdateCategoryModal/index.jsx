@@ -65,7 +65,7 @@ const UpdateCategoryModal = ({ isOpen, onClose, category, onCategoryUpdated }) =
           </button>
           <button
             onClick={handleUpdateCategory}
-            className="px-4 py-2 text-white bg-blue-500 rounded-md"
+            className="px-4 py-2 text-white bg-green-600 rounded-md"
             disabled={loading}
           >
             {loading ? "Memperbarui..." : "Update Kategori"}

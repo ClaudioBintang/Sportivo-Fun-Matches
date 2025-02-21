@@ -66,7 +66,7 @@ const CreateCategoryModal = ({ isOpen, onClose, onCategoryCreated }) => {
           </button>
           <button
             onClick={handleCreateCategory}
-            className="px-4 py-2 text-white bg-blue-500 rounded-md"
+            className="px-4 py-2 text-white bg-green-600 rounded-md"
             disabled={loading}
           >
             {loading ? "Membuat..." : "Buat Kategori"}

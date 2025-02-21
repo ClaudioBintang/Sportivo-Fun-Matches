@@ -84,14 +84,14 @@ const CreateActivitiesModal = ({ isOpen, onClose, onActivityCreated }) => {
           name="title"
           value={formData.title}
           onChange={handleChange}
-          placeholder="Judul Aktivitas"
+          placeholder="Name ofActivity"
           className="w-full px-3 py-2 mt-4 border border-gray-300 rounded-md"
         />
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
-          placeholder="Deskripsi"
+          placeholder="Description"
           className="w-full px-3 py-2 mt-4 border border-gray-300 rounded-md"
         ></textarea>
         <input
@@ -99,7 +99,7 @@ const CreateActivitiesModal = ({ isOpen, onClose, onActivityCreated }) => {
           name="slot"
           value={formData.slot}
           onChange={handleChange}
-          placeholder="Jumlah Slot"
+          placeholder="Nett"
           className="w-full px-3 py-2 mt-4 border border-gray-300 rounded-md"
         />
         <input
@@ -107,7 +107,7 @@ const CreateActivitiesModal = ({ isOpen, onClose, onActivityCreated }) => {
           name="price"
           value={formData.price}
           onChange={handleChange}
-          placeholder="Harga"
+          placeholder="Price"
           className="w-full px-3 py-2 mt-4 border border-gray-300 rounded-md"
         />
         <input
@@ -115,7 +115,7 @@ const CreateActivitiesModal = ({ isOpen, onClose, onActivityCreated }) => {
           name="address"
           value={formData.address}
           onChange={handleChange}
-          placeholder="Alamat"
+          placeholder="Address"
           className="w-full px-3 py-2 mt-4 border border-gray-300 rounded-md"
         />
         <input
@@ -144,7 +144,7 @@ const CreateActivitiesModal = ({ isOpen, onClose, onActivityCreated }) => {
           name="map_url"
           value={formData.map_url}
           onChange={handleChange}
-          placeholder="URL Peta"
+          placeholder="Location *map URL"
           className="w-full px-3 py-2 mt-4 border border-gray-300 rounded-md"
         />
         {error && <p className="mt-2 text-red-500">{error}</p>}
@@ -157,7 +157,7 @@ const CreateActivitiesModal = ({ isOpen, onClose, onActivityCreated }) => {
           </button>
           <button
             onClick={handleCreateActivity}
-            className="px-4 py-2 text-white bg-blue-500 rounded-md"
+            className="px-4 py-2 text-white bg-green-600 rounded-md"
             disabled={loading}
           >
             {loading ? "Membuat..." : "Buat Aktivitas"}
